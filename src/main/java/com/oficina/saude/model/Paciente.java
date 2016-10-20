@@ -1,6 +1,7 @@
 package com.oficina.saude.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,8 +27,15 @@ public class Paciente implements Serializable {
 	
 	@NotBlank(message="Endereço obrigatório")
 	private String endereco;
+<<<<<<< HEAD
 	
 	@NotNull(message="Número da residencia obrigatório")
+=======
+	@NotNull(message="Data de nascimento é obrigatório")
+	private Date dataNascimento;	
+
+	@NotNull(message="Obrigatorio")
+>>>>>>> origin/master
 	@Column(name="numero_casa")
 	private Integer numeroCasa;
 	
@@ -43,6 +51,15 @@ public class Paciente implements Serializable {
 	
 	
 	
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public Long getCpf() {
 		return cpf;
 	}
