@@ -1,5 +1,4 @@
 CREATE TABLE prontuario(
-	id pressao data presc alt pes
 	id INTEGER,
 	pressao VARCHAR(10),
 	data DATE,
