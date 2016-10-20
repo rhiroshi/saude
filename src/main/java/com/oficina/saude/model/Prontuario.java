@@ -21,4 +21,43 @@ public class Prontuario {
 	@NotNull(message="Peso é obrigatório")
 	private float peso;
 	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getPressao() {
+		return pressao;
+	}
+	public void setPressao(String pressao) {
+		this.pressao = pressao;
+	}
+	public Date getData() {
+		return data;
+	}
+	public void setData(Date data) {
+		this.data = data;
+	}
+	public String getPrescricao() {
+		return prescricao;
+	}
+	public void setPrescricao(String prescricao) {
+		this.prescricao = prescricao;
+	}
+	public float getAltura() {
+		return altura;
+	}
+	public void setAltura(float altura) {
+		this.altura = altura;
+	}
+	public float getPeso() {
+		return peso;
+	}
+	public void setPeso(float peso) {
+		this.peso = peso;
+	}
+	
+	
 }
