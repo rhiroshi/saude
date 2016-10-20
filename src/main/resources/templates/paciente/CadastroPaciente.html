@@ -5,7 +5,7 @@
 	layout:decorator="layout/LayoutPadrao">
 	
 <head>
-	<title>Cadastro de Turmas</title>
+	<title>Cadastro de Pacientes</title>
 </head>
 <body>
 <section class="aw-layout-content  js-content" layout:fragment="conteudo">
@@ -14,73 +14,72 @@
 	<div class="page-header">
 		<div class="container-fluid">
 			<h1>
-				Cadastro de Turmas
+				Cadastro de Pacientes
 			</h1>
 		</div>
 	</div>
 
 	<div class="container-fluid">
 	
-		<form method="post" th:objetct="${turma}" class="form-vertical  js-form-loading">
-	
-			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
-			<th:block th:include="fragments/MensagemSucesso"></th:block> 
+		<form method="post" class="form-vertical  js-form-loading">
 			
 			<div class="row">	
-				<div class="form-group col-sm-4" th:classappend="${#fields.hasErrors('nome')} ? has-error">
+				<div class="form-group col-sm-8" >
 					<label for="nome">Nome</label>
 					<input id="nome" type="text" class="form-control"/>
 				</div>
-				<div class="col-sm-8  form-group" th:classappend="${#fields.hasErrors('curso')} ? has-error">
-					<label for="curso" class="control-label">Curso</label>
-					<div class="utf-field-action" >
-						<select id="curso" class="form-control" >
-							<option value=""></option>
-							<option th:each="departamento : ${departamentos}" th:value="${departamento.codigo}" th:text="${departamento.nome}">Departamento</option>
-						</select>					
-					</div>					
+				<div class="form-group col-sm-4" >
+					<label for="cns">CNS</label>
+					<input id="cns" type="text" class="form-control"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-sm-4" >
+					<label for="cpf">CPF</label>
+					<input id="cpf" type="text" class="form-control"/>
+				</div>
+				<div class="form-group col-sm-4" >
+					<label for="rg">RG</label>
+					<input id="rg" type="text" class="form-control"/>
+				</div>
+				<div class="form-group col-sm-4" >
+					<label for="dataNascimento">Data de Nascimento</label>
+					<input id="dataNascimento" type="text" class="form-control"/>
 				</div>
 			</div>
 			
-
-			<div class="form-group">
-				<button class="btn  btn-primary" type="submit">Inserir disciplina</button>	
+			<div class="row">	
+				<div class="form-group col-sm-6" >
+					<label for="endereco">Endereço</label>
+					<input id="endereco" type="text" class="form-control"/>
+				</div>
+				<div class="form-group col-sm-2" >
+					<label for="numero">Nº</label>
+					<input id="numero" type="text" class="form-control"/>
+				</div>
+				<div class="form-group col-sm-4" >
+					<label for="bairro">Bairro</label>
+					<input id="bairro" type="text" class="form-control"/>
+				</div>
 			</div>
 			
-			<div class="table-responsive bw-tabela-simples">
-			<table class="table table-hover">
-				<thead>
-					<tr>
+			<div class="row">
+				<div class="form-group col-sm-4" >
+					<label for="telefone">Telefone Residêncial</label>
+					<input id="telefone" type="text" class="form-control"/>
+				</div>
+				<div class="form-group col-sm-4" >
+					<label for="celular">Telefone Celular</label>
+					<input id="celular" type="text" class="form-control"/>
+				</div>
 
-						<th class="table-cervejas-col-sku">Disciplina</th>
-						<th class="table-cervejas-col-nome">Nome</th>
-						<th class="table-cervejas-col-acoes"></th>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<tr>
-						<td class="text-center" th:text="AGDCP">AA1234</td>
-						<td th:text="Algoritmo">Algoritmo Nome</td>
-						<td class="text-center">
-							<a class="btn btn-link btn-xs" title="Excluir">
-								<i class="glyphicon glyphicon-remove"></i>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="text-center" th:text="LAB12">AA1234</td>
-						<td th:text="Laboratario">Laboratório Nome</td>
-						<td class="text-center">
-							<a class="btn btn-link btn-xs" title="Excluir">
-								<i class="glyphicon glyphicon-remove"></i>
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	
+			</div>
+			
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+				<a href="pesquisa-produtos.html" class="btn  btn-default">Cancelar</a>
+			</div>
+		
 		</form>
 	</div>
 
