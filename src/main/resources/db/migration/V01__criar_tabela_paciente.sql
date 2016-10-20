@@ -9,4 +9,4 @@ CREATE TABLE paciente(
 	telefone_residencial VARCHAR(50),
 	telefone_celular VARCHAR(50),
 	data_nascimento DATE
-)
+);
