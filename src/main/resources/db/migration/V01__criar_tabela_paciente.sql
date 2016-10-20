@@ -6,6 +6,6 @@ CREATE TABLE paciente(
 	numero_casa INTEGER,
 	bairro VARCHAR(255),
 	telefone_residencial VARCHAR(50),
-	telefone_celular VARCHAR(50)
+	telefone_celular VARCHAR(50),
 	data_nascimento DATE
 )
