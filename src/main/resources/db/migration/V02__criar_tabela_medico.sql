@@ -1,5 +1,5 @@
 CREATE TABLE medico(
-	crm INTEGER,
+	crm INTEGER PRIMARY KEY,
 	especialidade VARCHAR(255),
 	nome VARCHAR(255),
 	cpf INTEGER,

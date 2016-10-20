@@ -1,5 +1,5 @@
 CREATE TABLE farmaceutico(
-	crf INTEGER,
+	crf INTEGER PRIMARY KEY,
 	nome VARCHAR(255),
 	cpf INTEGER,
 	endereco VARCHAR(255),
