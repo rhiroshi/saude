@@ -10,7 +10,7 @@ import com.oficina.saude.repository.Pacientes;
 public class CadastroPacienteService {
 
 	@Autowired
-	Pacientes pacientes;
+	private Pacientes pacientes;
 	
 	public void salvar(Paciente paciente){
 		this.pacientes.save(paciente);

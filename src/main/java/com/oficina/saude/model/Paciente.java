@@ -16,20 +16,27 @@ public class Paciente implements Serializable {
 	
 	@Id
 	private Long cpf;
+	
 	@NotNull(message="Obrigatorio")
 	private Long rg;
+	
 	@NotBlank(message="Obrigatorio")
 	private String nome;
+	
 	@NotBlank(message="Obrigatorio")
 	private String endereco;
+	
 	@NotNull(message="Obrigatorio")
 	@Column(name="numero_casa")
 	private Integer numeroCasa;
+	
 	@NotBlank(message="Obrigatorio")
 	private String Bairro;
+	
 	@NotBlank(message="Obrigatorio")
 	@Column(name="telefone_residencial")
 	private String telefoneResidencial;
+	
 	@Column(name="telefone_celular")
 	private String telefoneCelular;
 	
