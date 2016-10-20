@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.oficina.saude.model.Paciente;
+
 @Controller
 @RequestMapping("/pacientes")
 public class PacienteController {
@@ -21,7 +23,7 @@ public class PacienteController {
 	}
 	
 	@RequestMapping(value = "/novo", method = RequestMethod.POST)
-	public ModelAndView cadastrar(/*@Valid Paciente paciente,*/ BindingResult result, RedirectAttributes attributes) {
+	public ModelAndView cadastrar(@Valid Paciente paciente, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return novo();
 		}
