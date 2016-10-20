@@ -10,7 +10,7 @@ import com.oficina.saude.repository.Medicos;
 public class CadastroMedicoService {
 	
 	@Autowired
-	Medicos medicos;
+	private Medicos medicos;
 	
 	public void salvar(Medico medico){
 		this.medicos.save(medico);

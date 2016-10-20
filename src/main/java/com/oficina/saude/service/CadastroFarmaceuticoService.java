@@ -10,7 +10,7 @@ import com.oficina.saude.repository.Farmaceuticos;
 public class CadastroFarmaceuticoService {
 
 	@Autowired
-	Farmaceuticos farmaceuticos;
+	private Farmaceuticos farmaceuticos;
 	
 	public void salvar(Farmaceutico farmaceutico){
 		this.farmaceuticos.save(farmaceutico);
