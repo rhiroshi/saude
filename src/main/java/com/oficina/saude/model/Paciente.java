@@ -27,15 +27,12 @@ public class Paciente implements Serializable {
 	
 	@NotBlank(message="Endereço obrigatório")
 	private String endereco;
-<<<<<<< HEAD
 	
-	@NotNull(message="Número da residencia obrigatório")
-=======
+	
 	@NotNull(message="Data de nascimento é obrigatório")
 	private Date dataNascimento;	
 
-	@NotNull(message="Obrigatorio")
->>>>>>> origin/master
+	@NotNull(message="Número da residencia obrigatório")
 	@Column(name="numero_casa")
 	private Integer numeroCasa;
 	
