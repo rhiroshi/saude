@@ -1,5 +1,5 @@
 CREATE TABLE paciente(
-	cpf LONG PRIMARY KEY,
+	cpf BIGINT(20) PRIMARY KEY,
 	rg LONG,
 	nome VARCHAR(255),
 	endereco VARCHAR(255),
