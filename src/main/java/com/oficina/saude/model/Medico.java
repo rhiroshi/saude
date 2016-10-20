@@ -3,12 +3,14 @@ package com.oficina.saude.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -17,28 +19,30 @@ public class Medico implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@NotNull(message="CRM é obrigatório")
 	private Integer crm;
 	
 	private String especialidade;
 	
-	@NotNull(message="Nome é obrigatório")
+	@NotBlank(message="Nome é obrigatório")
 	private String nome;
 	
 	@NotNull(message="CPF é obrigatório")
 	private Integer cpf;
 	
-	@NotNull(message="Endereço é obrigatório")
+	@NotBlank(message="Endereço é obrigatório")
 	private String endereco;
 	
 	@NotNull(message="Número da casa é obrigatório")
 	private Integer numeroCasa;
 	
-	@NotNull(message="Bairro é obrigatório")
+	@NotBlank(message="Bairro é obrigatório")
 	private String bairro;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")	
 	@Temporal(TemporalType.DATE)
 	@NotNull(message="Data de nascimento é obrigatório")
+	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 	
 	public Integer getCrm() {

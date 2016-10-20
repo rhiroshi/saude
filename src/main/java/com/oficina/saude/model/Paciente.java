@@ -37,6 +37,7 @@ public class Paciente implements Serializable {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")	
 	@Temporal(TemporalType.DATE)
 	@NotNull(message="Data de nascimento é obrigatório")
+	@Column(name = "data_nascimento")
 	private Date dataNascimento;	
 
 	@NotNull(message="Número da residencia obrigatório")
