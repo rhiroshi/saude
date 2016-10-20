@@ -1,14 +1,17 @@
 package com.oficina.saude.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Paciente implements Serializable {
@@ -22,13 +25,17 @@ public class Paciente implements Serializable {
 	@NotNull(message="RG obrigatório")
 	private Long rg;
 	
+	@NotNull(message="CNS obrigatório")
+	private Long cns;
+	
 	@NotBlank(message="Nome obrigatório")
 	private String nome;
 	
 	@NotBlank(message="Endereço obrigatório")
 	private String endereco;
 	
-	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")	
+	@Temporal(TemporalType.DATE)
 	@NotNull(message="Data de nascimento é obrigatório")
 	private Date dataNascimento;	
 
@@ -68,6 +75,12 @@ public class Paciente implements Serializable {
 	}
 	public void setRg(Long rg) {
 		this.rg = rg;
+	}
+	public Long getCns() {
+		return cns;
+	}
+	public void setCns(Long cns) {
+		this.cns = cns;
 	}
 	public String getNome() {
 		return nome;

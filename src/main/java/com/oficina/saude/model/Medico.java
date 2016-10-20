@@ -1,29 +1,46 @@
 package com.oficina.saude.model;
 
-import java.sql.Date;
+import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-@Entity
-public class Medico {
+import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
+public class Medico implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private Integer crm;
+	
 	private String especialidade;
+	
 	@NotNull(message="Nome é obrigatório")
 	private String nome;
+	
 	@NotNull(message="CPF é obrigatório")
 	private Integer cpf;
+	
 	@NotNull(message="Endereço é obrigatório")
 	private String endereco;
+	
 	@NotNull(message="Número da casa é obrigatório")
 	private Integer numeroCasa;
+	
 	@NotNull(message="Bairro é obrigatório")
 	private String bairro;
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")	
+	@Temporal(TemporalType.DATE)
 	@NotNull(message="Data de nascimento é obrigatório")
 	private Date dataNascimento;
+	
 	public Integer getCrm() {
 		return crm;
 	}
@@ -71,10 +88,29 @@ public class Medico {
 	}
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medico other = (Medico) obj;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
+		return true;
 	}	
-	
-	
-	
-	
-	
+		
 }

@@ -32,11 +32,15 @@ public class PacienteController {
 		if (result.hasErrors()) {
 			return novo(paciente);
 		}
-		//cadastroPacienteService.salvar(paciente);
-		System.out.println("Paciente >> " + paciente.getNome());
-		attributes.addFlashAttribute("mensagem","Paciente cadastrado com sucesso!");
+		try {
+			cadastroPacienteService.salvar(paciente);
+			attributes.addFlashAttribute("mensagem","Paciente cadastrado com sucesso!");
+			return new ModelAndView("redirect:/pacientes/novo");
+		} catch (IllegalArgumentException e) {
+			result.rejectValue("dataNascimento", null, e.getMessage());
+			return new ModelAndView("redirect:/pacientes/novo");
+		} 
 		
-		return new ModelAndView("redirect:/pacientes/novo");
 	}
 	
 }

@@ -1,6 +1,7 @@
 CREATE TABLE paciente(
 	cpf BIGINT PRIMARY KEY,
 	rg BIGINT,
+	cns BIGINT,
 	nome VARCHAR(255),
 	endereco VARCHAR(255),
 	numero_casa INTEGER,
