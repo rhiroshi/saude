@@ -11,10 +11,10 @@
 				<ul class="aw-menu__list">
 				
 					<li class="aw-menu__item">
-						<a href="dashboard.html"><i class="fa  fa-fw  fa-home"></i><span>Dashboard</span></a>
+						<a th:href="@{/}"><i class="fa  fa-fw  fa-home"></i><span>Dashboard</span></a>
 					</li>
 				
-					<li class="aw-menu__item  is-active">
+					<li class="aw-menu__item  is-expanded">
 						<a href="#">
 							<i class="fa  fa-fw  fa-file-text"></i><span>Cadastros</span>
 							<i class="aw-menu__navigation-icon  fa"></i>
@@ -22,7 +22,7 @@
 					
 						<ul class="aw-menu__list  aw-menu__list--sublist">
 							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/pacientes/novo}">Cadastro de Pacientes</a></li>
-							<li class="aw-menu__item  aw-menu__item--link  is-active"><a th:href="@{/farmaceuticos/novo}">Cadastros de Farmaceuticos</a></li>
+							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/farmaceuticos/novo}">Cadastros de Farmaceuticos</a></li>
 							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/medicos/novo}">Cadastro de Médicos</a></li>
 						</ul>
 					</li>
