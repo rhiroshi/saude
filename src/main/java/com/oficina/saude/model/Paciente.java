@@ -15,25 +15,26 @@ public class Paciente implements Serializable {
 	private static final long serialVersionUID = 1L; 
 	
 	@Id
+	@NotNull(message="CPF obrigatório")
 	private Long cpf;
 	
-	@NotNull(message="Obrigatorio")
+	@NotNull(message="RG obrigatório")
 	private Long rg;
 	
-	@NotBlank(message="Obrigatorio")
+	@NotBlank(message="Nome obrigatório")
 	private String nome;
 	
-	@NotBlank(message="Obrigatorio")
+	@NotBlank(message="Endereço obrigatório")
 	private String endereco;
 	
-	@NotNull(message="Obrigatorio")
+	@NotNull(message="Número da residencia obrigatório")
 	@Column(name="numero_casa")
 	private Integer numeroCasa;
 	
-	@NotBlank(message="Obrigatorio")
+	@NotBlank(message="Bairro obrigatório")
 	private String Bairro;
 	
-	@NotBlank(message="Obrigatorio")
+	@NotBlank(message="Telefone residêncial obrigatório")
 	@Column(name="telefone_residencial")
 	private String telefoneResidencial;
 	
