@@ -7,4 +7,5 @@ CREATE TABLE paciente(
 	bairro VARCHAR(255),
 	telefone_residencial VARCHAR(50),
 	telefone_celular VARCHAR(50)
+	data_nascimento DATE
 )
