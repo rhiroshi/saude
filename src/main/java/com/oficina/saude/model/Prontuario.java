@@ -26,8 +26,6 @@ public class Prontuario implements Serializable {
 	
 	private String pressao;
 	
-	private String prescricao;
-	
 	private float altura;
 
 	private float peso;
@@ -54,12 +52,7 @@ public class Prontuario implements Serializable {
 	public void setPressao(String pressao) {
 		this.pressao = pressao;
 	}
-	public String getPrescricao() {
-		return prescricao;
-	}
-	public void setPrescricao(String prescricao) {
-		this.prescricao = prescricao;
-	}
+
 	public float getAltura() {
 		return altura;
 	}
