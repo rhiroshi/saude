@@ -19,7 +19,7 @@ public class Prontuario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@NotNull(message = "Paciente é obrigatório")
 	private Paciente paciente;
@@ -36,10 +36,10 @@ public class Prontuario implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Paciente getPaciente() {
