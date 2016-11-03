@@ -21,7 +21,7 @@
 
 	<div class="container-fluid">
 	
-		<form method="POST" th:object="${prontuario}" class="form-vertical  js-form-loading">
+		<form method="POST" th:object="${prontuario}" th:action="@{/pacientes/pesquisa}" class="form-vertical  js-form-loading js-form-prontuario">
 			
 			<th:block th:include="fragments/MensagemSucesso"></th:block> 
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
@@ -87,6 +87,10 @@
 	</div>
 
 </section>
+
+<th:block layout:fragment="javascript-extra">
+	<script src="/javascripts/pesquisa.paciente-prontuario.js"></script>
+</th:block>
 
 </body>
 </html>

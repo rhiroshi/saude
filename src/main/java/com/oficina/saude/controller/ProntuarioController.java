@@ -15,6 +15,8 @@ import com.oficina.saude.model.Status;
 @Controller
 @RequestMapping("/prontuarios")
 public class ProntuarioController {
+	
+	
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Prontuario prontuario) {
@@ -39,5 +41,6 @@ public class ProntuarioController {
 		} 
 		
 	}
+
 	
 }
