@@ -25,7 +25,7 @@ public class Prontuario implements Serializable {
 	private Long id;
 	
 	@NotNull(message = "Paciente é obrigatório")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "codigo_paciente")
 	private Paciente paciente;
 	

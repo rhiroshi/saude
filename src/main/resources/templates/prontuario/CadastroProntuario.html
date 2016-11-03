@@ -5,7 +5,7 @@
 	layout:decorator="layout/LayoutPadrao">
 	
 <head>
-	<title>Cadastro de Prontuários</title>
+	<title>Agendamento</title>
 </head>
 <body>
 <section class="aw-layout-content  js-content" layout:fragment="conteudo">
@@ -14,7 +14,7 @@
 	<div class="page-header">
 		<div class="container-fluid">
 			<h1>
-				Cadastro de Prontuários
+				Agendamento
 			</h1>
 		</div>
 	</div>
@@ -27,23 +27,63 @@
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
 			
 			<div class="row">	
-				<div class="form-group col-sm-8">
-					<label for="nome">Nome</label>
-					<input id="nome" type="text" class="form-control" />
+				<div class="form-group col-sm-8" th:classappend="${#fields.hasErrors('paciente')} ? has-error">
+					<label for="paciente" class="control-label">Paciente</label>
+					<input id="paciente" type="text" class="form-control" th:field="*{paciente}"/>
 				</div>
-				<div class="form-group col-sm-8">
-					<label for="status">Status</label>
-					<input id="status" type="text" class="form-control"/>
+				<div class="form-group col-sm-4" th:classappend="${#fields.hasErrors('status')} ? has-error">
+					<label for="curso" class="control-label">Status</label>
+					<select id="curso" class="form-control" th:field="*{status}">
+						<option value="">Selecione o Status</option>
+						<option th:each="status : ${listaStatus}" th:value="${status}" th:text="${status.descricao}">Status</option>
+					</select>
+					
 				</div>
-			</div>	
-			
+			</div>			
 			
 			<div class="form-group">
-				<button class="btn  btn-primary" type="submit">Salvar</button>
-				<a href="pesquisa-produtos.html" class="btn  btn-default">Cancelar</a>
+				<button class="btn  btn-primary" type="submit">Agendar</button>
 			</div>
 		
 		</form>
+	</div>
+	
+	<div class="container-fluid">
+		<div class="table-responsive bw-tabela-simples">
+			<table class="table table-hover" >
+				<thead>
+					<tr>
+						<th class="table-cervejas-col-sku text-center">Paciente</th>
+						<th class="table-cervejas-col-nome text-center">Status</th>
+						<th class="table-cervejas-col-acoes"></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+						<tr>
+							<td class="text-center">Nome paciente</td>
+							<td class="text-center" >Status</td>
+							<td class="text-right">
+								<a class="btn btn-link btn-xs" title="Excluir">
+									<i class="glyphicon glyphicon-remove"></i>
+								</a>
+							</td>
+						</tr>
+					<th:block th:each="prontuario : ${prontuarios}">
+						<tr>
+							<td class="text-center" th:text="${prontuario.paciente.nome}">Nome turma</td>
+							<td class="text-center" th:text="${prontuario.status.descricao}">Curso</td>
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" title="Excluir">
+									<i class="glyphicon glyphicon-remove"></i>
+								</a>
+							</td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+
 	</div>
 
 </section>
