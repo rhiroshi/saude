@@ -21,4 +21,10 @@ public class ConsultaController {
 		return mv;
 	}
 	
+	@RequestMapping("/agendar")
+	public ModelAndView agendar(){
+		ModelAndView mv = new ModelAndView("consulta/AgendarConsulta");
+		
+		return mv;
+	}
 }
