@@ -1,8 +1,8 @@
 CREATE TABLE medico(
-	crm INTEGER PRIMARY KEY,
+	crm BIGINT PRIMARY KEY,
 	especialidade VARCHAR(255),
 	nome VARCHAR(255),
-	cpf INTEGER,
+	cpf BIGINT,
 	endereco VARCHAR(255),
 	numero_casa INTEGER,
 	bairro VARCHAR(255),

@@ -19,13 +19,13 @@ public class Farmaceutico implements Serializable {
 	
 	@Id
 	@NotNull(message="CRF é obrigatório")
-	private Integer crf;
+	private Long crf;
 	
 	@NotBlank(message="Nome é obrigatório")
 	private String nome;
 	
 	@NotNull(message="CPF é obrigatório")
-	private Integer cpf;
+	private Long cpf;
 	
 	@NotBlank(message="Endereço é obrigatório")
 	private String endereco;
@@ -42,10 +42,10 @@ public class Farmaceutico implements Serializable {
 	private Date dataNascimento;
 	
 	
-	public Integer getCrf() {
+	public Long getCrf() {
 		return crf;
 	}
-	public void setCrf(Integer crf) {
+	public void setCrf(Long crf) {
 		this.crf = crf;
 	}
 	public String getNome() {
@@ -54,10 +54,10 @@ public class Farmaceutico implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Integer getCpf() {
+	public Long getCpf() {
 		return cpf;
 	}
-	public void setCpf(Integer cpf) {
+	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
 	public String getEndereco() {

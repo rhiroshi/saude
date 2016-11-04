@@ -20,7 +20,7 @@ public class Medico implements Serializable {
 	
 	@Id
 	@NotNull(message="CRM é obrigatório")
-	private Integer crm;
+	private Long crm;
 	
 	private String especialidade;
 	
@@ -28,7 +28,7 @@ public class Medico implements Serializable {
 	private String nome;
 	
 	@NotNull(message="CPF é obrigatório")
-	private Integer cpf;
+	private Long cpf;
 	
 	@NotBlank(message="Endereço é obrigatório")
 	private String endereco;
@@ -45,10 +45,10 @@ public class Medico implements Serializable {
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 	
-	public Integer getCrm() {
+	public Long getCrm() {
 		return crm;
 	}
-	public void setCrm(Integer crm) {
+	public void setCrm(Long crm) {
 		this.crm = crm;
 	}
 	public String getEspecialidade() {
@@ -63,10 +63,10 @@ public class Medico implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Integer getCpf() {
+	public Long getCpf() {
 		return cpf;
 	}
-	public void setCpf(Integer cpf) {
+	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
 	public String getEndereco() {

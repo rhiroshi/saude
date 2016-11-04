@@ -1,7 +1,7 @@
 CREATE TABLE farmaceutico(
-	crf INTEGER PRIMARY KEY,
+	crf BIGINT PRIMARY KEY,
 	nome VARCHAR(255),
-	cpf INTEGER,
+	cpf BIGINT,
 	endereco VARCHAR(255),
 	numero_casa INTEGER,
 	bairro VARCHAR(255),
