@@ -1,6 +1,5 @@
 $(function(){
-	var form = $('.js-form-prontuario');
-	var url = form.attr('action');
+	var url = 'http://localhost:8080/pacientes/pesquisa';
 	//Pesquisar os cursos sem refresh na página
 	$("#paciente").keyup(function(){
 		
@@ -22,9 +21,9 @@ $(function(){
 		}
 		
 		function onPesquisaPacientes(pacientes) {
-			console.log('pacientes',pacientes);
+			var listaPacientes = $('#lista-paciente');
 			pacientes.forEach(function(paciente){
-				console.log('paciente',paciente.nome);
+				listaPacientes.append('<span value="'+ paciente.codigo + '">' + paciente.nome + '</span>');
 			}.bind(this))
 		}
 		

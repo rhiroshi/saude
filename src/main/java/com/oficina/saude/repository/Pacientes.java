@@ -8,6 +8,6 @@ import com.oficina.saude.model.Paciente;
 
 public interface Pacientes extends JpaRepository<Paciente, Long> {
 
-	public List<Paciente> findByNomeContaining(String nome);
+	public List<Paciente> findByNomeIgnoreCaseContaining(String nome);
 	
 }
