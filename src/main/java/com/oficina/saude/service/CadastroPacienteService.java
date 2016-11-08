@@ -21,7 +21,7 @@ public class CadastroPacienteService {
 	
 	public List<Paciente> pesquisar(String nome) {
 		List<Paciente> listaPacientes = new ArrayList<>();
-		listaPacientes = pacientes.findByNomeContaining(nome);
+		listaPacientes = pacientes.findByNomeIgnoreCaseContaining(nome);
 		return listaPacientes;
 	}
 }

@@ -49,9 +49,7 @@ public class PacienteController {
 	@RequestMapping(value = "/pesquisa" , method = RequestMethod.POST)
 	public List<Paciente> pesquisarPaciente(@RequestParam String nome) {
 		List<Paciente> pacientes = cadastroPacienteService.pesquisar(nome);
-		for (Paciente paciente : pacientes) {
-			System.out.println("paciente > " + paciente.getNome());
-		}
+	
 		return pacientes;
 	}
 	

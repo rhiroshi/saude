@@ -6,6 +6,7 @@
 	
 <head>
 	<title>Agendamento</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/prontuario-pacientes.css"/>
 </head>
 <body>
 <section class="aw-layout-content  js-content" layout:fragment="conteudo">
@@ -21,7 +22,7 @@
 
 	<div class="container-fluid">
 	
-		<form method="POST" th:object="${prontuario}" th:action="@{/pacientes/pesquisa}" class="form-vertical  js-form-loading js-form-prontuario">
+		<form method="POST" th:object="${prontuario}" th:action="@{/prontuarios/novo}" class="form-vertical  js-form-loading">
 			
 			<th:block th:include="fragments/MensagemSucesso"></th:block> 
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
@@ -30,6 +31,9 @@
 				<div class="form-group col-sm-8" th:classappend="${#fields.hasErrors('paciente')} ? has-error">
 					<label for="paciente" class="control-label">Paciente</label>
 					<input id="paciente" type="text" class="form-control" th:field="*{paciente}"/>
+					<div id="lista-paciente">
+						
+					</div>
 				</div>
 				<div class="form-group col-sm-4" th:classappend="${#fields.hasErrors('status')} ? has-error">
 					<label for="curso" class="control-label">Status</label>
