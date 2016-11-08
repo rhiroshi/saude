@@ -1,3 +1,12 @@
-#lista-paciente li {
-	list-style: none;
+#lista-paciente {
+	border: 1px solid black;
+	background: white;
+}
+#lista-paciente span {
+	display: block;	
+}
+
+#lista-paciente span:hover {
+	background: whitesmoke;
+	cursor: pointer;
 }

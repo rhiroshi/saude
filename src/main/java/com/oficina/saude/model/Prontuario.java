@@ -57,7 +57,6 @@ public class Prontuario implements Serializable {
 	public void setPressao(String pressao) {
 		this.pressao = pressao;
 	}
-
 	public float getAltura() {
 		return altura;
 	}

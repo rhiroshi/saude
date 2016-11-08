@@ -28,9 +28,10 @@
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
 			
 			<div class="row">	
-				<div class="form-group col-sm-8" th:classappend="${#fields.hasErrors('paciente')} ? has-error">
+				<div class="form-group col-sm-8" th:classappend="${#fields.hasErrors('paciente.nome')} ? has-error">
 					<label for="paciente" class="control-label">Paciente</label>
-					<input id="paciente" type="text" class="form-control" th:field="*{paciente}"/>
+					<input id="amostra" type="text" class="form-control" th:field="*{paciente.nome}"/>
+					<input id="paciente" type="hidden" class="form-control" th:field="*{paciente.cpf}"/>
 					<div id="lista-paciente">
 						
 					</div>
