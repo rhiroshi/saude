@@ -22,13 +22,13 @@
 
 	<div class="container-fluid">
 	
-		<form method="POST" th:object="${prontuario}" th:action="@{/prontuarios/novo}" class="form-vertical  js-form-loading">
+		<form method="POST" th:object="${prontuario}" th:action="@{/prontuarios/novo}" autocomplete="off" class="form-vertical  js-form-loading">
 			
 			<th:block th:include="fragments/MensagemSucesso"></th:block> 
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
 			
 			<div class="row">	
-				<div class="form-group col-sm-8" th:classappend="${#fields.hasErrors('paciente.nome')} ? has-error">
+				<div class="form-group col-sm-12" th:classappend="${#fields.hasErrors('paciente.nome')} ? has-error">
 					<label for="paciente" class="control-label">Paciente</label>
 					<input id="amostra" type="text" class="form-control" th:field="*{paciente.nome}"/>
 					<input id="paciente" type="hidden" class="form-control" th:field="*{paciente.cpf}"/>
@@ -36,16 +36,7 @@
 						
 					</div>
 				</div>
-				<div class="form-group col-sm-4" th:classappend="${#fields.hasErrors('status')} ? has-error">
-					<label for="curso" class="control-label">Status</label>
-					<select id="curso" class="form-control" th:field="*{status}">
-						<option value="">Selecione o Status</option>
-						<option th:each="status : ${listaStatus}" th:value="${status}" th:text="${status.descricao}">Status</option>
-					</select>
-					
-				</div>
 			</div>			
-			
 			<div class="form-group">
 				<button class="btn  btn-primary" type="submit">Agendar</button>
 			</div>
@@ -65,20 +56,11 @@
 				</thead>
 				
 				<tbody>
-						<tr>
-							<td class="text-center">Nome paciente</td>
-							<td class="text-center" >Status</td>
-							<td class="text-right">
-								<a class="btn btn-link btn-xs" title="Excluir">
-									<i class="glyphicon glyphicon-remove"></i>
-								</a>
-							</td>
-						</tr>
 					<th:block th:each="prontuario : ${prontuarios}">
 						<tr>
 							<td class="text-center" th:text="${prontuario.paciente.nome}">Nome turma</td>
 							<td class="text-center" th:text="${prontuario.status.descricao}">Curso</td>
-							<td class="text-center">
+							<td class="text-right">
 								<a class="btn btn-link btn-xs" title="Excluir">
 									<i class="glyphicon glyphicon-remove"></i>
 								</a>

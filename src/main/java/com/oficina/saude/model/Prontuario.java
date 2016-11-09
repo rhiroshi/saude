@@ -35,7 +35,6 @@ public class Prontuario implements Serializable {
 
 	private float peso;
 	
-	@NotNull(message = "Situação do status necessária")
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	

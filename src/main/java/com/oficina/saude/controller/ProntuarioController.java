@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oficina.saude.model.Prontuario;
 import com.oficina.saude.model.Status;
+import com.oficina.saude.repository.Prontuarios;
 import com.oficina.saude.service.CadastroProntuarioService;
 
 @Controller
@@ -20,11 +21,15 @@ public class ProntuarioController {
 	
 	@Autowired
 	private CadastroProntuarioService cadastroProntuarioService;
+	
+	@Autowired
+	private Prontuarios prontuarios;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Prontuario prontuario) {
 		ModelAndView mv = new ModelAndView("prontuario/CadastroProntuario");
-		mv.addObject("listaStatus", Status.values());
+		mv.addObject("agendado", Status.AGENDADO);
+		mv.addObject("prontuarios", prontuarios.findAll());
 		return mv;
 	}
 	
@@ -34,8 +39,7 @@ public class ProntuarioController {
 			return novo(prontuario);
 		}
 		try {
-			System.out.println("nome > " + prontuario.getPaciente().getCpf());
-			System.out.println("status > " + prontuario.getStatus());
+			prontuario.setStatus(Status.AGENDADO);
 			cadastroProntuarioService.salvar(prontuario);
 			attributes.addFlashAttribute("mensagem","Consulta agendada com sucesso!");
 			return new ModelAndView("redirect:/prontuarios/novo");
