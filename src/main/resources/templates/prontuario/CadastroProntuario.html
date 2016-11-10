@@ -65,7 +65,7 @@
 									<i class="glyphicon glyphicon-pencil"></i>
 								</a>
 								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
-										th:attr="data-id=${prontuario.id}"
+										th:attr="data-id=${prontuario.id}, data-nome=${prontuario.paciente.nome}"
 											title="Excluir" rel="tooltip" data-placement="top">
 									<span class="glyphicon glyphicon-remove"></span>
 								</a>
@@ -85,6 +85,7 @@
 
 <th:block layout:fragment="javascript-extra">
 	<script src="/javascripts/pesquisa.paciente-prontuario.js"></script>
+	<script src="/javascripts/exclui-agendamento.js"></script>
 </th:block>
 
 </body>

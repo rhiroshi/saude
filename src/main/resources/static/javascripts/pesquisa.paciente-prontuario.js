@@ -4,6 +4,7 @@ $(function(){
 	$("#amostra").keyup(function(){
 		var url = 'http://localhost:8080/pacientes/pesquisa';
 		var pesquisa = $(this).val().trim();
+		var listaPacientes = $('#lista-paciente');
 		
 		//Verificar se há algo digitado
 		if(pesquisa != ''){
@@ -18,21 +19,22 @@ $(function(){
 				success: onPesquisaPacientes.bind(this)
 			});
 		}else{
-			$('#lista-paciente').removeClass('margem-lista');
-			$('#lista-paciente').empty();
+			listaPacientes.removeClass('margem-lista');
+			listaPacientes.empty();
 			$(".resultado").html('');
 		}
 		
 		function onPesquisaPacientes(pacientes) {
-			var listaPacientes = $('#lista-paciente');
 			listaPacientes.empty();
-			if (pacientes) {
+			if (pacientes.length > 0) {
 				listaPacientes.addClass('margem-lista');
 				pacientes.forEach(function(paciente){
 					listaPacientes.append('<span id="'+ paciente.cpf + '">' + paciente.nome + '</span>');
 				}.bind(this))
 			} else {
-				
+				listaPacientes.removeClass('margem-lista');		
+				listaPacientes.empty();
+				$(".resultado").html('');		
 			}
 		}
 	});

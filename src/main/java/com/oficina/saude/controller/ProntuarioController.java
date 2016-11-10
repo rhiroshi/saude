@@ -50,10 +50,10 @@ public class ProntuarioController {
 		} 	
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public String excluir(@PathVariable Long id, RedirectAttributes attributes) {
 		System.out.println("codigo > ");
-		//cadastroProntuarioService.excluir(codigo);
+		cadastroProntuarioService.excluir(id);
 		attributes.addFlashAttribute("mensagem","Consulta excluída");
 		System.out.println("codigo > " + id);
 		return "redirect:/prontuarios/novo";
