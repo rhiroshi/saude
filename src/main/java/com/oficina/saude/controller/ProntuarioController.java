@@ -59,4 +59,9 @@ public class ProntuarioController {
 		return "redirect:/prontuarios/novo";
 	}
 	
+	@RequestMapping("/incluir")
+	public ModelAndView incluirAtributos(Prontuario prontuario) {
+		ModelAndView mv = new ModelAndView("prontuario/EditaProntuario");
+		return mv;
+	}
 }
