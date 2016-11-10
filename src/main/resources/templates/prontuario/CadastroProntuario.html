@@ -61,8 +61,13 @@
 							<td class="text-center" th:text="${prontuario.paciente.nome}">Nome turma</td>
 							<td class="text-center" th:text="${prontuario.status.descricao}">Curso</td>
 							<td class="text-right">
-								<a class="btn btn-link btn-xs" title="Excluir">
-									<i class="glyphicon glyphicon-remove"></i>
+								<a class="btn btn-link btn-xs" title="Editar">
+									<i class="glyphicon glyphicon-pencil"></i>
+								</a>
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+										th:attr="data-id=${prontuario.id}"
+											title="Excluir" rel="tooltip" data-placement="top">
+									<span class="glyphicon glyphicon-remove"></span>
 								</a>
 							</td>
 						</tr>
@@ -70,7 +75,10 @@
 				</tbody>
 			</table>
 		</div>
-
+		
+		
+		<div layout:include="prontuario/DialogoConfirmacaoExclusao"></div>
+		
 	</div>
 
 </section>

@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,7 +30,7 @@ public class ProntuarioController {
 	public ModelAndView novo(Prontuario prontuario) {
 		ModelAndView mv = new ModelAndView("prontuario/CadastroProntuario");
 		mv.addObject("agendado", Status.AGENDADO);
-		mv.addObject("prontuarios", prontuarios.findAll());
+		mv.addObject("prontuarios", prontuarios.findByStatus(Status.AGENDADO));
 		return mv;
 	}
 	
@@ -41,13 +42,21 @@ public class ProntuarioController {
 		try {
 			prontuario.setStatus(Status.AGENDADO);
 			cadastroProntuarioService.salvar(prontuario);
-			attributes.addFlashAttribute("mensagem","Consulta agendada com sucesso!");
+			attributes.addFlashAttribute("mensagem","Consulta agendada com sucesso");
 			return new ModelAndView("redirect:/prontuarios/novo");
 		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
 			return new ModelAndView("redirect:/prontuarios/novo");
-		} 
-		
+		} 	
 	}
-
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long id, RedirectAttributes attributes) {
+		System.out.println("codigo > ");
+		//cadastroProntuarioService.excluir(codigo);
+		attributes.addFlashAttribute("mensagem","Consulta excluída");
+		System.out.println("codigo > " + id);
+		return "redirect:/prontuarios/novo";
+	}
 	
 }

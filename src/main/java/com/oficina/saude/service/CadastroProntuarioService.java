@@ -16,4 +16,8 @@ public class CadastroProntuarioService {
 		this.prontuarios.save(prontuario);
 	}
 	
+	public void excluir(Long codigo){
+		prontuarios.delete(codigo);
+	}
+	
 }
