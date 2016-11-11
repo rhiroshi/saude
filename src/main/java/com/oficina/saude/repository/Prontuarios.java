@@ -10,5 +10,4 @@ import com.oficina.saude.model.Status;
 public interface Prontuarios extends JpaRepository<Prontuario, Long>{
 
 	public List<Prontuario> findByStatus(Status status);
-	
 }

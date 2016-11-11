@@ -66,9 +66,10 @@ public class ProntuarioController {
 		return "redirect:/prontuarios/novo";
 	}
 	
-	@RequestMapping("/incluir")
-	public ModelAndView incluirAtributos(Prontuario prontuario) {
+	@RequestMapping("/incluir/{id}")
+	public ModelAndView incluirAtributos(@PathVariable("id") Prontuario prontuario) {
 		ModelAndView mv = new ModelAndView("prontuario/EditaProntuario");
+		mv.addObject("prontuario", prontuario);
 		return mv;
 	}
 
