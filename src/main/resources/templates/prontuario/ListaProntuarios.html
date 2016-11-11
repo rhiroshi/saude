@@ -44,22 +44,16 @@
 				</thead>
 				
 				<tbody>
-					<th:block th:each="prontuario : ${prontuarios}">
-						<tr>
-							<td class="text-center" th:text="${prontuario.paciente.nome}">Nome turma</td>
-							<td class="text-center" th:text="${prontuario.status.descricao}">Curso</td>
-							<td class="text-right">
-								<a class="btn btn-link btn-xs" title="Editar">
-									<i class="glyphicon glyphicon-pencil"></i>
-								</a>
-								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
-										th:attr="data-id=${prontuario.id}"
-											title="Excluir" rel="tooltip" data-placement="top">
-									<span class="glyphicon glyphicon-remove"></span>
-								</a>
-							</td>
-						</tr>
-					</th:block>
+					<tr>
+						<td class="text-center js-pciente-nome" >Nome turma</td>
+						<td class="text-center js-prontuario-status" >Curso</td>
+						<td class="text-right">
+							<a class="btn btn-link btn-xs" title="Editar">
+								<i class="glyphicon glyphicon-pencil"></i>
+							</a>
+						</td>
+					</tr>
+					
 				</tbody>
 			</table>
 		</div>

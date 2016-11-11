@@ -1,13 +1,16 @@
 package com.oficina.saude.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -16,7 +19,7 @@ import com.oficina.saude.model.Status;
 import com.oficina.saude.repository.Prontuarios;
 import com.oficina.saude.service.CadastroProntuarioService;
 
-@Controller
+@RestController
 @RequestMapping("/prontuarios")
 public class ProntuarioController {
 	
@@ -73,12 +76,13 @@ public class ProntuarioController {
 	}
 	
 	@RequestMapping(value = "/lista", method = RequestMethod.POST)
-	public ModelAndView listar(Status status) {
-		ModelAndView mv = new ModelAndView("prontuario/ListaProntuarios");
+	public List<Prontuario> listar(@RequestParam Status status) {
 		System.out.println(status);
-		mv.addObject("statuss", Status.values());
-		mv.addObject("prontuarios", prontuarios.findByStatus(status));
-		return mv;
+		List<Prontuario> prontuarios = this.prontuarios.findByStatus(status);
+		for (int i = 0; i < prontuarios.size(); i++) {
+			System.out.println("prontuario: " + prontuarios.get(i).getPaciente().getNome());
+		}	
+		return prontuarios;
 	}
 
 }

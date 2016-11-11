@@ -1,7 +1,7 @@
 var Prontuarios = (function(){
     function Prontuarios(){
         this.comboStatus = $('#status-prontuario');
-        console.log(this.comboStatus);
+        console.log(this.comboStatus.val());
     }
     
     Prontuarios.prototype.iniciar = function(){
@@ -14,7 +14,7 @@ var Prontuarios = (function(){
             $.ajax({
                 url: 'http://localhost:8080/prontuarios/lista',
                 method: 'POST',
-    			data: { status:status},
+    			data: {status:status},
                 success: onProntuariosRetornados.bind(this)
             });
         }else{
