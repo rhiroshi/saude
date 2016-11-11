@@ -1,7 +1,6 @@
 var Prontuarios = (function(){
     function Prontuarios(){
         this.comboStatus = $('#status-prontuario');
-        console.log(this.comboStatus.val());
     }
     
     Prontuarios.prototype.iniciar = function(){
@@ -25,7 +24,6 @@ var Prontuarios = (function(){
     }
     
     function onProntuariosRetornados(prontuarios){
-    	console.log('Protuarios retornados',prontuarios);
     	/*if (docentes.length > 0) {
 	    	this.comboCoordenador.html('');
 	        this.comboCoordenador.removeAttr('disabled');
