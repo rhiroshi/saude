@@ -1,6 +1,7 @@
 var Prontuarios = (function(){
     function Prontuarios(){
         this.comboStatus = $('#status-prontuario');
+        this.listaPaciente = $('.js-lista-paciente');
     }
     
     Prontuarios.prototype.iniciar = function(){
@@ -17,25 +18,25 @@ var Prontuarios = (function(){
                 success: onProntuariosRetornados.bind(this)
             });
         }else{
-        	console.log('Select sem valor');
-           
-           
+        	this.listaPaciente.empty();
         }
     }
     
     function onProntuariosRetornados(prontuarios){
-    	/*if (docentes.length > 0) {
-	    	this.comboCoordenador.html('');
-	        this.comboCoordenador.removeAttr('disabled');
-	        this.comboCoordenador.html('<option>Selecione o Curso</option>');
-	        docentes.forEach(function(docente){
-	            var optionDocente = $('<option>').val(docente.codigo).text(docente.nome);
-	            this.comboCoordenador.append(optionDocente);
+    	if (prontuarios.length > 0) {
+	        prontuarios.forEach(function(prontuario){
+	        	var trPaciente = $('<tr>');
+	        	var tdPaciente = '<td class="text-center">'+prontuario.paciente.nome+'</td>';
+	        	tdPaciente += '<td class="text-center">'+prontuario.status+'</td>';
+	        	tdPaciente += '<td class="text-right"><a class="btn btn-link btn-xs" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a></td>';
+	        	
+	        	trPaciente.append(tdPaciente);
+	        	
+	        	this.listaPaciente.append(trPaciente);
 	        }.bind(this))
     	} else {
-    		this.comboCoordenador.html('');
-            this.comboCoordenador.attr('disabled', 'disabled');
-    	}*/
+    		this.listaPaciente.empty();
+    	}
     }
     
     return Prontuarios;

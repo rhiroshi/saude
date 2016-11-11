@@ -84,7 +84,7 @@ public class ProntuarioController {
 		System.out.println(status);
 		List<Prontuario> prontuarios = this.prontuarios.findByStatus(status);
 		for (int i = 0; i < prontuarios.size(); i++) {
-			System.out.println("prontuario: " + prontuarios.get(i).getPaciente().getNome());
+			System.out.println("prontuario: " + prontuarios.get(i).getStatus().getDescricao());
 		}	
 		return prontuarios;
 	}
