@@ -11,19 +11,19 @@ $('document').ready(function($){
 	rg.mask('00.000.000-0');
 	
 	var options = {onKeyPress: function(cpfn, e, field, options){
-		var masks = ['0.000.000-00','00.000.000-00','000.000.000-00'];
-		if(cpf.length < 9){
-			console.log('0', cpf.length);
+		var masks = ['0.000.000-000','00.000.000-000','000.000.000-00'];
+		if(cpfn.length <= 12){
+			console.log('0', cpfn.length);
 			mask = masks[0];
 		}
-		else if(cpfn.length > 9 && cpfn.length < 10){
-			console.log('1', cpf.length);
+		else if(cpfn.length = 13 && cpfn.length < 14){
+			console.log('1', cpfn.length);
 			mask = masks[1];
-		}else if(cpfn.length > 10){
-			console.log('2', cpf.length);
+		}else if(cpfn.length = 14){
+			console.log('2', cpfn.length);
 			mask = masks[2];
 		}
-		this.cpf.mask(mask, options);
+		cpf.mask(mask, options);
 	}};
 	
 	form.submit(function(){
