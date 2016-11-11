@@ -19,18 +19,18 @@
 			</h1>
 		</div>
 	</div>
-
-	<div class="container-fluid">			
-		<div class="row">	
-			<div class="form-group col-sm-12">
-				<label for="stat" class="control-label">Status</label>
-				<select id="status" class="form-control">
-					<option value="">Selecione o status</option>
-						<option th:each="stat : ${status}" th:value="${stat}" th:text="${stat.descricao}">STATUS</option>
-				</select>	
-			</div>
-		</div>			
-	</div>
+	
+		<div class="container-fluid">			
+			<div class="row">	
+				<div class="form-group col-sm-12">
+					<label for="stat" class="control-label">Status</label>
+					<select id="status-prontuario" class="form-control" th:field="*{statuss}">
+						<option value="">Selecione o status</option>
+						<option th:each="status : ${statuss}" th:value="${status}" th:text="${status.descricao}">STATUS</option>
+					</select>	
+				</div>
+			</div>			
+		</div>
 	
 	<div class="container-fluid">
 		<div class="table-responsive bw-tabela-simples">
@@ -69,7 +69,7 @@
 </section>
 
 <th:block layout:fragment="javascript-extra">
-	<script src="/javascripts/listar-consultas.js"></script>
+	<script src="/javascripts/listar-prontuarios.js"></script>
 </th:block>
 
 </body>

@@ -1,7 +1,8 @@
 var Prontuarios = (function(){
     function Prontuarios(){
-        this.comboStatus = $('#status');
-        console.log();
+        this.comboStatus = $('#status-prontuario');
+       
+        console.log(comboStatus);
     }
     
     Prontuarios.prototype.iniciar = function(){

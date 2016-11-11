@@ -68,7 +68,7 @@ public class ProntuarioController {
 	@RequestMapping("/lista")
 	public ModelAndView lista() {
 		ModelAndView mv = new ModelAndView("prontuario/ListaProntuarios");
-		mv.addObject("status", Status.values());
+		mv.addObject("statuss", Status.values());
 		return mv;
 	}
 	
