@@ -76,7 +76,8 @@ public class ProntuarioController {
 	public ModelAndView listar(Status status) {
 		ModelAndView mv = new ModelAndView("prontuario/ListaProntuarios");
 		System.out.println(status);
-		//mv.addObject("prontuarios", prontuarios.findByStatus(status));
+		mv.addObject("statuss", Status.values());
+		mv.addObject("prontuarios", prontuarios.findByStatus(status));
 		return mv;
 	}
 

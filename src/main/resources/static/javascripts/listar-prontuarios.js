@@ -1,8 +1,7 @@
 var Prontuarios = (function(){
     function Prontuarios(){
         this.comboStatus = $('#status-prontuario');
-       
-        console.log(comboStatus);
+        console.log(this.comboStatus);
     }
     
     Prontuarios.prototype.iniciar = function(){
@@ -10,23 +9,23 @@ var Prontuarios = (function(){
     }
     
     function onStatusSelecionado(){
-   
+    	var status = this.comboStatus.val();
         if(status){
             $.ajax({
                 url: 'http://localhost:8080/prontuarios/lista',
                 method: 'POST',
     			data: { status:status},
-                success: onDocentesRetornados.bind(this)
+                success: onProntuariosRetornados.bind(this)
             });
         }else{
-        	console.log('teste1');
+        	console.log('Select sem valor');
            
            
         }
     }
     
-    function onDocentesRetornados(prontuarios){
-    	console.log(prontuarios);
+    function onProntuariosRetornados(prontuarios){
+    	console.log('Protuarios retornados',prontuarios);
     	/*if (docentes.length > 0) {
 	    	this.comboCoordenador.html('');
 	        this.comboCoordenador.removeAttr('disabled');
