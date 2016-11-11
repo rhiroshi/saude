@@ -9,4 +9,5 @@
 #lista-paciente span:hover {
 	background: whitesmoke;
 	cursor: pointer;
+	font-weight: bold;
 }

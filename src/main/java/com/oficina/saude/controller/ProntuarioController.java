@@ -1,5 +1,6 @@
 package com.oficina.saude.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -44,6 +45,9 @@ public class ProntuarioController {
 		}
 		try {
 			prontuario.setStatus(Status.AGENDADO);
+			java.util.Date udata = new java.util.Date();
+			Date data = new Date(udata.getTime());
+			prontuario.setData(data);
 			cadastroProntuarioService.salvar(prontuario);
 			attributes.addFlashAttribute("mensagem","Consulta agendada com sucesso");
 			return new ModelAndView("redirect:/prontuarios/novo");

@@ -1,6 +1,7 @@
 package com.oficina.saude.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -38,6 +39,16 @@ public class Prontuario implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
+	private Date data;
+	
+	
+	
+	public Date getData() {
+		return data;
+	}
+	public void setData(Date data) {
+		this.data = data;
+	}
 	public Long getId() {
 		return id;
 	}

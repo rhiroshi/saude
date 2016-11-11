@@ -48,6 +48,7 @@ $(function(){
 		var nome = $(this).text();
 		amostra.val(nome);
 		paciente.val(this.id);
+		$('#lista-paciente').removeClass('margem-lista');	
 		$('#lista-paciente').empty();
 	});
 	/* #### Funlção seleciona paciente #### */	
