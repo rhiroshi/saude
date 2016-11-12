@@ -48,10 +48,10 @@ public class ProntuarioController {
 				java.util.Date udata = new java.util.Date();
 				Date data = new Date(udata.getTime());
 				prontuario.setData(data);
+				prontuario.setStatus(Status.AGENDADO);
 			}
-			prontuario.setStatus(Status.AGENDADO);
 			cadastroProntuarioService.salvar(prontuario);
-			attributes.addFlashAttribute("mensagem", "Consulta agendada com sucesso");
+			attributes.addFlashAttribute("mensagem", "Agendamento salvo com sucesso");
 			return new ModelAndView("redirect:/prontuarios/novo");
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
@@ -71,6 +71,7 @@ public class ProntuarioController {
 	@RequestMapping("/incluir/{id}")
 	public ModelAndView incluirAtributos(@PathVariable("id") Prontuario prontuario) {
 		ModelAndView mv = new ModelAndView("prontuario/EditaProntuario");
+		prontuario.setStatus(Status.ATENDIDO);
 		mv.addObject("prontuario", prontuario);
 		return mv;
 	}

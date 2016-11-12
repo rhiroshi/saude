@@ -21,7 +21,7 @@
 
 	<div class="container-fluid">
 	
-		<form id="formulario" th:object="${prontuario}" th:action="@{prontuarios/novo}" method="POST" class="form-vertical  js-form-loading">
+		<form id="formulario" method="POST" th:object="${prontuario}" th:action="@{/prontuarios/novo}"  class="form-vertical  js-form-loading">
 			
 			<!-- <th:block th:include="fragments/MensagemSucesso"></th:block>
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block> -->
@@ -34,17 +34,17 @@
 				
 				<div class="form-group col-sm-4" >
 					<label for="pressao">Pressão</label>
-					<input id="pressao" th:field="*{prontuario.pressao}" type="text" class="form-control" />
+					<input id="pressao" th:field="*{pressao}" type="text" class="form-control" />
 				</div>
 				
 				<div class="form-group col-sm-4" >
 					<label for="altura">Altura</label>
-					<input id="altura" th:field="*{prontuario.altura}" type="text" class="form-control" />
+					<input id="altura" th:field="*{altura}" type="text" class="form-control" />
 				</div>
 				
 				<div class="form-group col-sm-4" >
 					<label for="peso">Peso</label>
-					<input id="peso" th:field="*{prontuario.peso}" type="text" class="form-control" />
+					<input id="peso" th:field="*{peso}" type="text" class="form-control" />
 				</div>
 				
 			</div>
@@ -53,7 +53,10 @@
 				<button class="btn  btn-primary" type="submit">Salvar</button>
 				<button class="btn  btn-default" type="reset">Limpar</button>
 			</div>
-		
+			<input th:field="*{paciente}" th:value="${prontuario.paciente}" type="hidden"/>
+			<input th:field="*{id}" th:value="${prontuario.id}" type="hidden"/>
+			<input th:field="*{status}" th:value="${prontuario.status}" type="hidden"/>
+			<input th:field="*{data}" th:value="${prontuario.data}" type="hidden"/>
 		</form>
 	</div>
 	<script src="/javascripts/mascara.js"></script>
