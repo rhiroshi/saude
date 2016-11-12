@@ -23,10 +23,10 @@ import com.oficina.saude.service.CadastroProntuarioService;
 @RestController
 @RequestMapping("/prontuarios")
 public class ProntuarioController {
-	
+
 	@Autowired
 	private CadastroProntuarioService cadastroProntuarioService;
-	
+
 	@Autowired
 	private Prontuarios prontuarios;
 
@@ -37,35 +37,37 @@ public class ProntuarioController {
 		mv.addObject("prontuarios", prontuarios.findByStatus(Status.AGENDADO));
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/novo", method = RequestMethod.POST)
 	public ModelAndView agendar(@Valid Prontuario prontuario, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return novo(prontuario);
 		}
 		try {
+			if (prontuario.getData() == null) {
+				java.util.Date udata = new java.util.Date();
+				Date data = new Date(udata.getTime());
+				prontuario.setData(data);
+			}
 			prontuario.setStatus(Status.AGENDADO);
-			java.util.Date udata = new java.util.Date();
-			Date data = new Date(udata.getTime());
-			prontuario.setData(data);
 			cadastroProntuarioService.salvar(prontuario);
-			attributes.addFlashAttribute("mensagem","Consulta agendada com sucesso");
+			attributes.addFlashAttribute("mensagem", "Consulta agendada com sucesso");
 			return new ModelAndView("redirect:/prontuarios/novo");
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 			return new ModelAndView("redirect:/prontuarios/novo");
-		} 	
+		}
 	}
-	
+
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public String excluir(@PathVariable Long id, RedirectAttributes attributes) {
 		System.out.println("codigo > ");
 		cadastroProntuarioService.excluir(id);
-		attributes.addFlashAttribute("mensagem","Consulta excluída");
+		attributes.addFlashAttribute("mensagem", "Consulta excluída");
 		System.out.println("codigo > " + id);
 		return "redirect:/prontuarios/novo";
 	}
-	
+
 	@RequestMapping("/incluir/{id}")
 	public ModelAndView incluirAtributos(@PathVariable("id") Prontuario prontuario) {
 		ModelAndView mv = new ModelAndView("prontuario/EditaProntuario");
@@ -79,14 +81,14 @@ public class ProntuarioController {
 		mv.addObject("statuss", Status.values());
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/lista", method = RequestMethod.POST)
 	public List<Prontuario> listar(@RequestParam Status status) {
 		System.out.println(status);
 		List<Prontuario> prontuarios = this.prontuarios.findByStatus(status);
 		for (int i = 0; i < prontuarios.size(); i++) {
 			System.out.println("prontuario: " + prontuarios.get(i).getStatus().getDescricao());
-		}	
+		}
 		return prontuarios;
 	}
 

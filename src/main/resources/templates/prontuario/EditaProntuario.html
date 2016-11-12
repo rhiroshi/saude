@@ -21,7 +21,7 @@
 
 	<div class="container-fluid">
 	
-		<form id="formulario" th:object="${prontuario}" th:action="@{prontuarios/incluir}" method="POST" class="form-vertical  js-form-loading">
+		<form id="formulario" th:object="${prontuario}" th:action="@{prontuarios/novo}" method="POST" class="form-vertical  js-form-loading">
 			
 			<!-- <th:block th:include="fragments/MensagemSucesso"></th:block>
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block> -->
@@ -34,17 +34,17 @@
 				
 				<div class="form-group col-sm-4" >
 					<label for="pressao">Pressão</label>
-					<input id="pressao" type="text" class="form-control" />
+					<input id="pressao" th:field="*{prontuario.pressao}" type="text" class="form-control" />
 				</div>
 				
 				<div class="form-group col-sm-4" >
 					<label for="altura">Altura</label>
-					<input id="altura" type="text" class="form-control" />
+					<input id="altura" th:field="*{prontuario.altura}" type="text" class="form-control" />
 				</div>
 				
 				<div class="form-group col-sm-4" >
 					<label for="peso">Peso</label>
-					<input id="peso" type="text" class="form-control" />
+					<input id="peso" th:field="*{prontuario.peso}" type="text" class="form-control" />
 				</div>
 				
 			</div>
