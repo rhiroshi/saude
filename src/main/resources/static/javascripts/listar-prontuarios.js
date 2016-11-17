@@ -29,9 +29,11 @@ var Prontuarios = (function(){
 	        	var trPaciente = $('<tr>');
 	        	var tdPaciente = '<td class="text-center">'+prontuario.paciente.nome+'</td>';
 	        	tdPaciente += '<td class="text-center">'+prontuario.status+'</td>';
-	        	
-	        	tdPaciente += '<td class="text-right"><a href="/prontuarios/incluir/'+prontuario.id+'" class="btn btn-link btn-xs" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a></td>';
-	        	
+	        	if (prontuario.status === 'AGENDADO') {
+	        		tdPaciente += '<td class="text-right"><a href="/prontuarios/incluir/'+prontuario.id+'" class="btn btn-link btn-xs" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a></td>';
+	        	} else {
+	        		tdPaciente += '<td></td>';
+	        	}
 	        	trPaciente.append(tdPaciente);
 	        	
 	        	this.listaPaciente.append(trPaciente);

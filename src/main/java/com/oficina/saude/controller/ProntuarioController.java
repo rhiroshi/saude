@@ -71,12 +71,9 @@ public class ProntuarioController {
 	@RequestMapping("/incluir/{id}")
 	public ModelAndView retornaProntuario(@PathVariable("id") Prontuario prontuario) {
 		ModelAndView mv = new ModelAndView("prontuario/EditaProntuario");
-<<<<<<< Upstream, based on branch 'master' of https://github.com/brunexmg/saude.git
 		prontuario.setStatus(Status.ATENDIDO);
 		mv.addObject("prontuario", prontuario);
-=======
 		mv.addObject(prontuario);
->>>>>>> 0fc4542 v_6.3.0
 		return mv;
 	}
 	
@@ -100,15 +97,7 @@ public class ProntuarioController {
 
 	@RequestMapping(value = "/lista", method = RequestMethod.POST)
 	public List<Prontuario> listar(@RequestParam Status status) {
-<<<<<<< Upstream, based on branch 'master' of https://github.com/brunexmg/saude.git
-		System.out.println(status);
 		List<Prontuario> prontuarios = this.prontuarios.findByStatus(status);
-		for (int i = 0; i < prontuarios.size(); i++) {
-			System.out.println("prontuario: " + prontuarios.get(i).getStatus().getDescricao());
-		}
-=======
-		List<Prontuario> prontuarios = this.prontuarios.findByStatus(status);	
->>>>>>> 0fc4542 v_6.3.0
 		return prontuarios;
 	}
 
