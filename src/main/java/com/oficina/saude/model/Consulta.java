@@ -1,7 +1,6 @@
 package com.oficina.saude.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,9 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "consulta")
@@ -33,10 +29,19 @@ public class Consulta implements Serializable {
 	@JoinColumn(name = "codigo_medico")
 	private Medico medico;
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")	
-	@NotNull(message="Data é obrigatório")
-	private LocalDate data;
+	private String observacao;
 	
+	
+	
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -59,14 +64,6 @@ public class Consulta implements Serializable {
 
 	public void setMedico(Medico medico) {
 		this.medico = medico;
-	}
-
-	public LocalDate getData() {
-		return data;
-	}
-
-	public void setData(LocalDate data) {
-		this.data = data;
 	}
 
 	@Override
