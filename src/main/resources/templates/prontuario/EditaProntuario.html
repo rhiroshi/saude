@@ -21,7 +21,11 @@
 
 	<div class="container-fluid">
 	
+<<<<<<< Upstream, based on branch 'master' of https://github.com/brunexmg/saude.git
 		<form id="formulario" method="POST" th:object="${prontuario}" th:action="@{/prontuarios/novo}"  class="form-vertical  js-form-loading">
+=======
+		<form id="formulario" th:object="${prontuario}" th:action="@{/prontuarios/alterar}" method="POST" class="form-vertical  js-form-loading">
+>>>>>>> 0fc4542 v_6.3.0
 			
 			<!-- <th:block th:include="fragments/MensagemSucesso"></th:block>
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block> -->
@@ -30,21 +34,34 @@
 				<div class="form-group col-sm-12" >
 					<label for="nome">Nome</label>
 					<input id="nome" type="text" class="form-control" th:value="${prontuario.paciente.nome}" disabled="disabled"/>
+					<input id="id" type="hidden" class="form-control" th:value="${prontuario.id}" th:field="*{id}"/>
 				</div>
 				
 				<div class="form-group col-sm-4" >
 					<label for="pressao">Pressão</label>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/brunexmg/saude.git
 					<input id="pressao" th:field="*{pressao}" type="text" class="form-control" />
+=======
+					<input id="pressao" type="text" class="form-control" th:field="*{pressao}"/>
+>>>>>>> 0fc4542 v_6.3.0
 				</div>
 				
 				<div class="form-group col-sm-4" >
 					<label for="altura">Altura</label>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/brunexmg/saude.git
 					<input id="altura" th:field="*{altura}" type="text" class="form-control" />
+=======
+					<input id="altura" type="text" class="form-control" th:field="*{altura}"/>
+>>>>>>> 0fc4542 v_6.3.0
 				</div>
 				
 				<div class="form-group col-sm-4" >
 					<label for="peso">Peso</label>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/brunexmg/saude.git
 					<input id="peso" th:field="*{peso}" type="text" class="form-control" />
+=======
+					<input id="peso" type="text" class="form-control" th:field="*{peso}"/>
+>>>>>>> 0fc4542 v_6.3.0
 				</div>
 				
 			</div>

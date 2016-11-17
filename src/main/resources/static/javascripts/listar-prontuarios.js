@@ -24,11 +24,13 @@ var Prontuarios = (function(){
     
     function onProntuariosRetornados(prontuarios){
     	if (prontuarios.length > 0) {
+    		this.listaPaciente.empty();
 	        prontuarios.forEach(function(prontuario){
 	        	var trPaciente = $('<tr>');
 	        	var tdPaciente = '<td class="text-center">'+prontuario.paciente.nome+'</td>';
 	        	tdPaciente += '<td class="text-center">'+prontuario.status+'</td>';
-	        	tdPaciente += '<td class="text-right"><a class="btn btn-link btn-xs" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a></td>';
+	        	
+	        	tdPaciente += '<td class="text-right"><a href="/prontuarios/incluir/'+prontuario.id+'" class="btn btn-link btn-xs" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a></td>';
 	        	
 	        	trPaciente.append(tdPaciente);
 	        	
