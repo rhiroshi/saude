@@ -5,7 +5,6 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event){
 	var modal = $(this);
 	var form = modal.find('form');
 	var action = form.data('url-base');
-	console.log('nome',nome,'id',id);
 	if(!action.endsWith('/')){
 		action += '/';
 	}

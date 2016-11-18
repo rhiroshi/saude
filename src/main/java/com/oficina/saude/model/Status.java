@@ -4,7 +4,8 @@ public enum Status {
 	
 	AGENDADO("Agendado"),
 	ATENDIDO("Atendido"),
-	AGUARDANDO("Aguardando");
+	AGUARDANDO("Aguardando"),
+	CANCELADO("Cancelado"),;
 	
 	private String descricao;
 	

@@ -60,12 +60,10 @@ public class ProntuarioController {
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	public String excluir(@PathVariable Long id, RedirectAttributes attributes) {
-		System.out.println("codigo > ");
+	public ModelAndView excluir(@PathVariable Long id, RedirectAttributes attributes) {
 		cadastroProntuarioService.excluir(id);
 		attributes.addFlashAttribute("mensagem", "Consulta excluída");
-		System.out.println("codigo > " + id);
-		return "redirect:/prontuarios/novo";
+		return new ModelAndView("redirect:/prontuarios/novo");
 	}
 
 	@RequestMapping("/incluir/{id}")
@@ -83,7 +81,7 @@ public class ProntuarioController {
 		pront.setAltura(prontuario.getAltura());
 		pront.setPressao(prontuario.getPressao());
 		pront.setPeso(prontuario.getPeso());
-		pront.setStatus(Status.ATENDIDO);
+		pront.setStatus(Status.AGUARDANDO);
 		cadastroProntuarioService.salvar(pront);
 		return new ModelAndView("redirect:/prontuarios/lista");
 	}

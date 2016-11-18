@@ -31,8 +31,6 @@ public class Consulta implements Serializable {
 
 	private String observacao;
 	
-	
-	
 	public String getObservacao() {
 		return observacao;
 	}
