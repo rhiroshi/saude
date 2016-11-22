@@ -18,14 +18,14 @@ public class Farmaceutico implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@NotNull(message="CRF é obrigatório")
-	private Long crf;
+	@NotNull(message="CPF é obrigatório")
+	private Long cpf;
 	
 	@NotBlank(message="Nome é obrigatório")
 	private String nome;
 	
-	@NotNull(message="CPF é obrigatório")
-	private Long cpf;
+	@NotNull(message="CRF é obrigatório")
+	private Long crf;
 	
 	@NotBlank(message="Endereço é obrigatório")
 	private String endereco;
