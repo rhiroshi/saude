@@ -19,11 +19,13 @@ import com.oficina.saude.security.AppUserDetailsService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	//private UserDetailsService userDetailsService;
+	private UserDetailsService userDetailsService;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		//auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+		//auth.inMemoryAuthentication()
+			//.withUser("admin").password("admin").roles("ADMIN");
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 	
 	@Override
