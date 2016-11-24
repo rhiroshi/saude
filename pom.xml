@@ -85,6 +85,13 @@
 			<artifactId>spring-security-config</artifactId>
 		</dependency>
 		
+		<!-- Apache Beans Utils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

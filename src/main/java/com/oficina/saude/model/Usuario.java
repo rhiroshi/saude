@@ -5,10 +5,14 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+//import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
+//import com.oficina.saude.validation.AtributoConfirmacao;
+
+//@AtributoConfirmacao(atributo = "senha", atributoConfirmacao = "confirmacaoSenha", message = "Confirmação da senha não confere")
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
@@ -22,9 +26,10 @@ public class Usuario implements Serializable {
 	
 	private String senha;
 	
-	private Grupo grupo;
+	/*@Transient
+	private String confirmacaoSenha;*/
 	
-	private Object funcionario;
+	//private Grupo grupo;
 
 	public String getEmail() {
 		return email;
@@ -41,22 +46,22 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+		
+	/*public String getConfirmacaoSenha() {
+		return confirmacaoSenha;
+	}
+	
+	public void setConfirmacaoSenha(String confirmacaoSenha) {
+		this.confirmacaoSenha = confirmacaoSenha;
+	}*/
 
-	public Grupo getGrupo() {
+	/*public Grupo getGrupo() {
 		return grupo;
 	}
 
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
-	}
-
-	public Object getFuncionario() {
-		return funcionario;
-	}
-
-	public void setFuncionario(Object funcionario) {
-		this.funcionario = funcionario;
-	}
+	}*/
 
 	@Override
 	public int hashCode() {

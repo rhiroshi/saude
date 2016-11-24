@@ -5,7 +5,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -19,16 +22,16 @@ public class Medico implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@NotNull(message="CRM é obrigatório")
-	private Long crm;
+	@NotNull(message="CPF é obrigatório")
+	private Long cpf;
 	
 	private String especialidade;
 	
 	@NotBlank(message="Nome é obrigatório")
 	private String nome;
 	
-	@NotNull(message="CPF é obrigatório")
-	private Long cpf;
+	@NotNull(message="CRM é obrigatório")
+	private Long crm;
 	
 	@NotBlank(message="Endereço é obrigatório")
 	private String endereco;
@@ -45,6 +48,17 @@ public class Medico implements Serializable {
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 	
+	@NotNull
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "email_usuario")
+	private Usuario usuario;
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public Long getCrm() {
 		return crm;
 	}

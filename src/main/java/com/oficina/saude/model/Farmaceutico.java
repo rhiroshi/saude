@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -41,6 +44,10 @@ public class Farmaceutico implements Serializable {
 	@NotNull(message="Data de nascimento é obrigatório")
 	private Date dataNascimento;
 	
+	@NotNull
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "email_usuario")
+	private Usuario usuario;
 	
 	public Long getCrf() {
 		return crf;
@@ -84,6 +91,13 @@ public class Farmaceutico implements Serializable {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	
 	
 	

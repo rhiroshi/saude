@@ -5,7 +5,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -54,8 +57,17 @@ public class Paciente implements Serializable {
 	@Column(name="telefone_celular")
 	private String telefoneCelular;
 	
+	@NotNull
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "email_usuario")
+	private Usuario usuario;
 	
-	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}

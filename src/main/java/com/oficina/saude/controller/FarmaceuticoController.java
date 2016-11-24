@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oficina.saude.model.Farmaceutico;
 import com.oficina.saude.service.CadastroFarmaceuticoService;
+import com.oficina.saude.service.CadastroUsuarioService;
 
 @Controller
 @RequestMapping("/farmaceuticos")
@@ -19,6 +20,9 @@ public class FarmaceuticoController {
 
 	@Autowired
 	private CadastroFarmaceuticoService cadastroFarmaceuticoService;
+	
+	@Autowired
+	private CadastroUsuarioService cadastroUsuarioService;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(Farmaceutico farmaceutico) {
@@ -33,6 +37,8 @@ public class FarmaceuticoController {
 			return novo(farmaceutico);
 		}
 		try {
+			cadastroUsuarioService.salvar(farmaceutico.getUsuario());
+					
 			cadastroFarmaceuticoService.salvar(farmaceutico);
 			attributes.addFlashAttribute("mensagem","Farmaceutico cadastrado com sucesso!");
 			return new ModelAndView("redirect:/farmaceuticos/novo");

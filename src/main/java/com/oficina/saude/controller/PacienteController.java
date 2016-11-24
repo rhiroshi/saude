@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oficina.saude.model.Paciente;
 import com.oficina.saude.service.CadastroPacienteService;
+import com.oficina.saude.service.CadastroUsuarioService;
 
 @RestController
 @RequestMapping("/pacientes")
@@ -22,6 +23,9 @@ public class PacienteController {
 
 	@Autowired
 	private CadastroPacienteService cadastroPacienteService;
+	
+	@Autowired
+	private CadastroUsuarioService cadastroUsuarioService;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(Paciente paciente) {
@@ -36,6 +40,7 @@ public class PacienteController {
 			return novo(paciente);
 		}
 		try {
+			cadastroUsuarioService.salvar(paciente.getUsuario());
 			cadastroPacienteService.salvar(paciente);
 			attributes.addFlashAttribute("mensagem","Paciente cadastrado com sucesso!");
 			return new ModelAndView("redirect:/pacientes/novo");
