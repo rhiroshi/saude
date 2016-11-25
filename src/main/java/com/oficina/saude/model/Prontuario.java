@@ -41,8 +41,16 @@ public class Prontuario implements Serializable {
 	
 	private Date data;
 	
+	private Date horario;
 	
 	
+	
+	public Date getHorario() {
+		return horario;
+	}
+	public void setHorario(Date horario) {
+		this.horario = horario;
+	}
 	public Date getData() {
 		return data;
 	}

@@ -2,6 +2,7 @@ CREATE TABLE prontuario (
 	id SERIAL PRIMARY KEY,
 	pressao VARCHAR(10),
 	data DATE,
+	horario TIMESTAMP,
 	altura DECIMAL,
 	peso DECIMAL,
 	status VARCHAR(255),

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oficina.saude.model.Paciente;
+import com.oficina.saude.repository.Pacientes;
 import com.oficina.saude.service.CadastroPacienteService;
 import com.oficina.saude.service.CadastroUsuarioService;
 
@@ -26,6 +27,9 @@ public class PacienteController {
 	
 	@Autowired
 	private CadastroUsuarioService cadastroUsuarioService;
+	
+	@Autowired
+	private Pacientes pacientes;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(Paciente paciente) {
@@ -58,4 +62,11 @@ public class PacienteController {
 		return pacientes;
 	}
 	
+	@RequestMapping(value="/lista", method=RequestMethod.GET)
+	public ModelAndView listaPacientes(){
+		System.out.println("asd");
+		ModelAndView mv = new ModelAndView("/listagem/listarPacientes");
+		mv.addObject("pacientes", pacientes.findAll());
+		return mv;
+	}
 }

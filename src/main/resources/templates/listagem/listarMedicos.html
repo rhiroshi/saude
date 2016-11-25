@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+	
+<head>
+	<title>Listagem de Medicos</title>
+</head>
+<body>
+<section class="aw-layout-content  js-content" layout:fragment="conteudo">
+
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Listagem de Medicos
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+	<div class="table-responsive bw-tabela-simples">
+			<table class="table table-hover" >
+				<thead>
+					<tr>
+						<th class="text-center">Paciente</th>
+						<th class="text-center">CPF</th>
+						<th class="text-center">CNS</th>
+						<th class="text-center">Data Nascimento</th>
+					</tr>
+				</thead>
+				
+				<tbody class="js-lista-paciente">
+					<th:block th:each="paciente : ${pacientes}">
+					<tr>
+					<th class="text-center" th:text="${paciente.nome}"></th>
+					<td class="text-center" th:text="${paciente.cpf}"></td>
+					<td class="text-center" th:text="${paciente.cns}"></td>
+					<td class="text-center" th:text="${paciente.dataNascimento}"></td>
+					</tr>
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</section>
+
+</body>
+</html>
