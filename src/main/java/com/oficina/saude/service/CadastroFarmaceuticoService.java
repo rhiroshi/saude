@@ -16,4 +16,8 @@ public class CadastroFarmaceuticoService {
 		this.farmaceuticos.save(farmaceutico);
 	}
 	
+	public void excluir(Long cpf){
+		this.farmaceuticos.delete(cpf);
+	}
+	
 }

@@ -16,4 +16,8 @@ public class CadastroMedicoService {
 		this.medicos.save(medico);
 	}
 
+	public void excluir(Long cpf){
+		medicos.delete(cpf);
+	}
+	
 }

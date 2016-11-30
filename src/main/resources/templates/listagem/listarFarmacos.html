@@ -5,7 +5,7 @@
 	layout:decorator="layout/LayoutPadrao">
 	
 <head>
-	<title>Listagem de Medicos</title>
+	<title>Listagem de Farmacos</title>
 </head>
 <body>
 <section class="aw-layout-content  js-content" layout:fragment="conteudo">
@@ -14,7 +14,7 @@
 	<div class="page-header">
 		<div class="container-fluid">
 			<h1>
-				Listagem de Medicos
+				Listagem de Farmacos
 			</h1>
 		</div>
 	</div>
@@ -25,28 +25,28 @@
 			<table class="table table-hover" >
 				<thead>
 					<tr>
-						<th class="text-center">Médico</th>
+						<th class="text-center">Farmaco</th>
 						<th class="text-center">CPF</th>
 						<th class="text-center">CRM</th>
 						<th class="text-center">Data Nascimento</th>
 					</tr>
 				</thead>
 				
-				<tbody class="js-lista-medicos">
-					<th:block th:each="medico : ${medicos}">
+				<tbody class="js-lista-farmaco">
+					<th:block th:each="farmaco : ${farmacos}">
 					<tr>
-					<th class="text-center" th:text="${medico.nome}"></th>
-					<td class="text-center" th:text="${medico.cpf}"></td>
-					<td class="text-center" th:text="${medico.crm}"></td>
-					<td class="text-center" th:text="${medico.dataNascimento}"></td>
+					<th class="text-center" th:text="${farmaco.nome}"></th>
+					<td class="text-center" th:text="${farmaco.cpf}"></td>
+					<td class="text-center" th:text="${farmaco.crf}"></td>
+					<td class="text-center" th:text="${farmaco.dataNascimento}"></td>
 					<td class="text-right">
-								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#ModalExcluirMedico"
-										th:attr="data-cpf=${medico.cpf}, data-nome=${medico.nome}"
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#ModalExcluirFarmaco"
+										th:attr="data-cpf=${farmaco.cpf}, data-nome=${farmaco.nome}"
 											title="Excluir" rel="tooltip" data-placement="top">
 									<span class="glyphicon glyphicon-remove"></span>
 								</a>
 								<a class="btn btn-link btn-xs"
-									th:href="@{edit/{cpf}(cpf=${medico.cpf})}"
+									th:href="@{edit/{cpf}(cpf=${farmaco.cpf})}"
 									title="Editar" rel="tooltip" data-placement="top"> <span
 										class="glyphicon glyphicon-pencil"></span>
 								</a>
@@ -58,12 +58,12 @@
 		</div>
 	</div>
 
-		<div layout:include="medico/ModalExcluirMedico"></div>
+		<div layout:include="farmaceutico/ModalExcluirFarmaco"></div>
 		
 </section>
 
 <th:block layout:fragment="javascript-extra">
-	<script src="/javascripts/exclui-medico.js"></script>
+	<script src="/javascripts/exclui-farmaco.js"></script>
 </th:block>
 </body>
 </html>

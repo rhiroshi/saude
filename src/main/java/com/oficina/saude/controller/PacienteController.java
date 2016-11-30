@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,6 +56,14 @@ public class PacienteController {
 		
 	}
 	
+
+	@RequestMapping("/edit/{cpf}")
+	public ModelAndView edicao(@PathVariable("cpf") Paciente paciente) {
+		ModelAndView mv = new ModelAndView("/paciente/CadastroPaciente"); 
+		mv.addObject(paciente);
+		return mv;
+	}
+	
 	@RequestMapping(value = "/pesquisa" , method = RequestMethod.POST)
 	public List<Paciente> pesquisarPaciente(@RequestParam String nome) {
 		List<Paciente> pacientes = cadastroPacienteService.pesquisar(nome);
@@ -68,5 +77,13 @@ public class PacienteController {
 		ModelAndView mv = new ModelAndView("/listagem/listarPacientes");
 		mv.addObject("pacientes", pacientes.findAll());
 		return mv;
+	}
+	
+
+	@RequestMapping(value = "/excluir/{cpf}", method = RequestMethod.DELETE)
+	public ModelAndView excluir(@PathVariable Long cpf, RedirectAttributes attributes) {
+		cadastroPacienteService.excluir(cpf);
+		attributes.addFlashAttribute("mensagem", "Paciente excluido");
+		return new ModelAndView("redirect:/pacientes/lista");
 	}
 }

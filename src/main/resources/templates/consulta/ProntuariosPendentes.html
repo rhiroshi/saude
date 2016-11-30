@@ -32,8 +32,8 @@
 					<tbody>
 						<th:block th:each="prontuario : ${prontuarios}">
 							<tr>
-								<td class="text-center" th:text="${prontuario.paciente.nome}">Nome turma</td>
-								<td class="text-center" th:text="${prontuario.status.descricao}">Curso</td>
+								<td class="text-center" th:text="${prontuario.paciente.nome}">Nome Paciente</td>
+								<td class="text-center" th:text="${prontuario.status.descricao}">Status</td>
 								<td class="text-right">
 									<a class="btn btn-default" th:href="@{/consulta}" role="button">Consultar</a>
 									<a class="btn btn-default" th:href="@{/consulta/cancelar/{id}(id=${prontuario.id})}" role="button">Cancelar</a>

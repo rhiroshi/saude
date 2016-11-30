@@ -21,7 +21,7 @@
 
 	<div class="container-fluid">
 	
-		<form id="formulario" method="POST" th:object="${medico}" class="form-vertical  js-form-loading">
+		<form id="formulario" method="POST" th:object="${medico}" th:action="@{/medicos/novo}" class="form-vertical  js-form-loading">
 			
 			<th:block th:include="fragments/MensagemSucesso"></th:block> 
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block>

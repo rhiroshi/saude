@@ -18,6 +18,7 @@
 			</h1>
 		</div>
 	</div>
+			<th:block th:include="fragments/MensagemSucesso"></th:block> 
 
 	<div class="container-fluid">
 	<div class="table-responsive bw-tabela-simples">
@@ -28,6 +29,7 @@
 						<th class="text-center">CPF</th>
 						<th class="text-center">CNS</th>
 						<th class="text-center">Data Nascimento</th>
+						<th class="text-center">Ações</th>
 					</tr>
 				</thead>
 				
@@ -38,6 +40,18 @@
 					<td class="text-center" th:text="${paciente.cpf}"></td>
 					<td class="text-center" th:text="${paciente.cns}"></td>
 					<td class="text-center" th:text="${paciente.dataNascimento}"></td>
+					<td class="text-right">
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#ModalExcluirPaciente"
+										th:attr="data-cpf=${paciente.cpf}, data-nome=${paciente.nome}"
+											title="Excluir" rel="tooltip" data-placement="top">
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+								<a class="btn btn-link btn-xs"
+									th:href="@{edit/{cpf}(cpf=${paciente.cpf})}"
+									title="Editar" rel="tooltip" data-placement="top"> <span
+										class="glyphicon glyphicon-pencil"></span>
+								</a>
+					</td>
 					</tr>
 					</th:block>
 				</tbody>
@@ -45,7 +59,12 @@
 		</div>
 	</div>
 
+		<div layout:include="paciente/ModalExcluirPaciente"></div>
+		
 </section>
 
+<th:block layout:fragment="javascript-extra">
+	<script src="/javascripts/exclui-paciente.js"></script>
+</th:block>
 </body>
 </html>
