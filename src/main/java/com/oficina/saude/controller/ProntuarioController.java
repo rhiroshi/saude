@@ -46,7 +46,6 @@ public class ProntuarioController {
 		try {
 			if (prontuario.getData() == null) {
 				java.util.Date udata = new java.util.Date();
-				System.out.println(udata.toString());
 				Date data = new Date(udata.getTime());
 				prontuario.setData(data);
 				prontuario.setStatus(Status.AGENDADO);

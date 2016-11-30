@@ -1,5 +1,6 @@
 package com.oficina.saude.repository;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -20,4 +21,6 @@ public interface Prontuarios extends JpaRepository<Prontuario, Long>{
 	@Transactional
 	@Query(value="delete from Prontuario c where c.paciente = ?1")
 	public void deleteByPaciente(Paciente paciente);
+	
+	public Long countByData(Date data);
 }

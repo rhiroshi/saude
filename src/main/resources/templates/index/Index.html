@@ -20,9 +20,29 @@
 	</div>
 
 	<div class="container-fluid">
-	
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa fa-users fa-3x" ></i>
+					</div>
+					<div class="aw-box__value" th:text="${pacientesCadastrados}"></div>
+					<div class="aw-box__title">Pacientes Cadastrados</div>
+				</div>
+			</div>
 		
+			<div class="col-sm-3">
+				<div class="aw-box">
+					<div class="aw-box__icon">
+						<i class="fa fa-book fa-3x" ></i>
+					</div>
+					<div class="aw-box__value" th:text="${consultasHoje}"></div>
+					<div class="aw-box__title">Total de consultas hoje</div>
+				</div>
+			</div>
+		</div>
 	</div>
+	
 
 </section>
 
