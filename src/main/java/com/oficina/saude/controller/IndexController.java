@@ -9,8 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/brunexmg/saude.git
 import com.oficina.saude.model.Paciente;
 import com.oficina.saude.model.Usuario;
+=======
+>>>>>>> 157abaf v_7.5.0
 import com.oficina.saude.repository.Consultas;
 import com.oficina.saude.repository.Pacientes;
 import com.oficina.saude.repository.Prontuarios;
