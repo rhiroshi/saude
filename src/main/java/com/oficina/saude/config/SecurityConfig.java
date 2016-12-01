@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/farmaceuticos/edit/**", "/farmaceuticos/excluir/**").hasAuthority("ADMIN")
 				.antMatchers("/pacientes/edit/**", "/pacientes/excluir/**").hasAuthority("ADMIN")
 				.antMatchers("/prontuarios/**").hasAnyAuthority("ADMIN", "FARMACO")
+				.antMatchers("/pacientes/lista","/medicos/lista","/farmaceuticos/lista").hasAnyAuthority("MEDICO","FARMACO","ADMIN")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

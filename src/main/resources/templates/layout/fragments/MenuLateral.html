@@ -5,7 +5,7 @@
 	
 <body>
 
-<aside class="aw-layout-sidebar  js-sidebar" th:fragment="menulateral">
+<aside class="aw-layout-sidebar  js-sidebar" th:fragment="menulateral" th:classappend="${#authorization.expression('hasAuthority(''PACIENTE'')')} ? is-toggled">
 		<div class="aw-layout-sidebar__content">
 		
 			<nav class="aw-menu  js-menu">
@@ -40,7 +40,7 @@
 							
 						</ul>
 					</li>
-					<li class="aw-menu__item">
+					<li class="aw-menu__item" sec:authorize="hasAnyAuthority('ADMIN','FARMACO','MEDICO')">
 						<a href="#">
 							<i class="fa  fa-fw  fa-file-text"></i><span>Listagens</span>
 							<i class="aw-menu__navigation-icon  fa"></i>
