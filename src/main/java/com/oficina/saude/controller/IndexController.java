@@ -29,23 +29,23 @@ public class IndexController {
 	
 	@RequestMapping
 	public ModelAndView novo() {
+		ModelAndView mv;
 		SecurityContext context = SecurityContextHolder.getContext();
 		System.out.println(context.getAuthentication().getAuthorities().toString());
-		if(context.getAuthentication().getAuthorities().equals("[PACIENTE]")){
+		if(context.getAuthentication().getAuthorities().equals(Roles.PACIENTE)){
 			// --- PACIENTE ACESSANDO  ---
-			ModelAndView mv = new ModelAndView("/index/IndexPaciente");
+			mv = new ModelAndView("/index/IndexPaciente");
 			mv.addObject("consultas", consultas.consultasRealizadas());
-			return mv;
 		}else{
 		
 			// --- OUTROS FUNCIONARIOS ---
 			java.util.Date udata = new java.util.Date();
 			Date data = new Date(udata.getTime());
-			ModelAndView mv = new ModelAndView("/index/Index");
+			mv = new ModelAndView("/index/Index");
 			mv.addObject("pacientesCadastrados", pacientes.count());
 			mv.addObject("consultasHoje", prontuarios.countByData(data));
-			return mv;
 		}
+		return mv;
 	}
 	
 }
