@@ -31,13 +31,12 @@ public class IndexController {
 	public ModelAndView novo() {
 		ModelAndView mv;
 		SecurityContext context = SecurityContextHolder.getContext();
-		System.out.println(context.getAuthentication().getAuthorities().toString());
-		if(context.getAuthentication().getAuthorities().equals(Roles.PACIENTE)){
+		String comparar = context.getAuthentication().getAuthorities().toString();
+		if(comparar.equals("[PACIENTE]")){
 			// --- PACIENTE ACESSANDO  ---
 			mv = new ModelAndView("/index/IndexPaciente");
 			mv.addObject("consultas", consultas.consultasRealizadas());
 		}else{
-		
 			// --- OUTROS FUNCIONARIOS ---
 			java.util.Date udata = new java.util.Date();
 			Date data = new Date(udata.getTime());
