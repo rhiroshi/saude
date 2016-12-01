@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oficina.saude.model.Farmaceutico;
+import com.oficina.saude.model.Roles;
+import com.oficina.saude.model.Usuario;
 import com.oficina.saude.repository.Farmaceuticos;
 import com.oficina.saude.service.CadastroFarmaceuticoService;
 import com.oficina.saude.service.CadastroUsuarioService;
@@ -42,7 +44,9 @@ public class FarmaceuticoController {
 			return novo(farmaceutico);
 		}
 		try {
-			cadastroUsuarioService.salvar(farmaceutico.getUsuario());
+			Usuario usuario = farmaceutico.getUsuario();
+			usuario.setGrupo(Roles.FARMACO);
+			cadastroUsuarioService.salvar(usuario);
 					
 			cadastroFarmaceuticoService.salvar(farmaceutico);
 			attributes.addFlashAttribute("mensagem","Farmaceutico cadastrado com sucesso!");

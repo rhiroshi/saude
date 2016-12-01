@@ -21,24 +21,25 @@
 
 	<div class="container-fluid">
 	
-		<form method="POST" class="form-vertical  js-form-loading" th:object="${consulta}">
+		<form method="POST" class="form-vertical  js-form-loading" th:action="@{/consulta/salvar}" th:object="${consulta}">
 			
 			<!-- <th:block th:include="fragments/MensagemSucesso"></th:block> 
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
 			 -->
 			 <div class="form-group">
 			 	<label>Nome do Médico</label>
-			 	<input disabled="disabled" type="text" class="form-control" th:text="${nomeMedico}">
+			 	<input disabled="disabled" type="text" class="form-control" th:value="${medicos.nome}" />
 			 </div>
 			 
 			 <div class="form-group">
 			 	<label>Nome do Paciente</label>
-			 	<input disabled="disabled" type="text" class="form-control" th:text="${nomePaciente}">
+			 	<input disabled="disabled" type="text" class="form-control" th:value="${prontuarios.paciente.nome}"/>
+				<input type="hidden" th:value="${prontuarios.id}" th:field="*{prontuario.id}"/>
 			 </div>
 			 
-			<div class="row form-group">
+			<div class="form-group">
 				<label for="descrica-consulta">Descrição da consulta</label>
-				<textarea id="descricao-consulta" class="form-control" th:field="*{descricao}"></textarea>
+				<textarea id="descricao-consulta" class="form-control" th:field="*{observacao}"></textarea>
 			</div>
 			
 			<div class="form-group">

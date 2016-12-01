@@ -12,7 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oficina.saude.model.Medico;
-import com.oficina.saude.model.Paciente;
+import com.oficina.saude.model.Roles;
+import com.oficina.saude.model.Usuario;
 import com.oficina.saude.repository.Medicos;
 import com.oficina.saude.service.CadastroMedicoService;
 import com.oficina.saude.service.CadastroUsuarioService;
@@ -43,7 +44,9 @@ public class MedicoController {
 			return novo(medico);
 		}
 		try {
-			cadastroUsuarioService.salvar(medico.getUsuario());
+			Usuario usuario = medico.getUsuario();
+			usuario.setGrupo(Roles.MEDICO);
+			cadastroUsuarioService.salvar(usuario);
 			cadastroMedicoService.salvar(medico);
 			attributes.addFlashAttribute("mensagem","Médico cadastrado com sucesso!");
 			return new ModelAndView("redirect:/medicos/novo");

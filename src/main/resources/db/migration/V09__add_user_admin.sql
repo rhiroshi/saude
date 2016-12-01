@@ -1,1 +1,1 @@
-insert into usuario values('admin','$2a$10$Uxig9f1xNu3enQkxBA1tbutS1WYTADWweDLFvyrKzpDZ.Qjzo0/hu',1);
+insert into usuario values('admin@saude.com','$2a$10$Uxig9f1xNu3enQkxBA1tbutS1WYTADWweDLFvyrKzpDZ.Qjzo0/hu',3);

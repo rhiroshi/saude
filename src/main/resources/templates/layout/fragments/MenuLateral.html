@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	
 <body>
 
@@ -35,8 +36,7 @@
 					
 						<ul class="aw-menu__list  aw-menu__list--sublist">
 							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/prontuarios/novo}">Agendamento</a></li>
-							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/prontuarios/lista}">Lista de Prontuários</a></li>	
-							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/pacientes/lista}">Lista de Pacientes</a></li>							
+							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/prontuarios/lista}">Lista de Prontuários</a></li>							
 							
 						</ul>
 					</li>
@@ -53,7 +53,7 @@
 							
 						</ul>
 					</li>
-					<li class="aw-menu__item">
+					<li class="aw-menu__item" sec:authorize="hasAnyAuthority('MEDICO','ADMIN')">
 						<a href="#">
 							<i class="fa  fa-fw  fa-file-text"></i><span>Administração de Consultas</span>
 							<i class="aw-menu__navigation-icon  fa"></i>
@@ -64,7 +64,7 @@
 							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/consulta/atender}">Atendimento</a></li>
 						</ul>
 					</li>
-				
+					
 				</ul>
 			</nav>
 		

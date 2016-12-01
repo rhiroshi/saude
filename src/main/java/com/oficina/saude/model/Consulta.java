@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "consulta")
@@ -25,8 +27,8 @@ public class Consulta implements Serializable {
 	@JoinColumn(name = "codigo_prontuario")
 	private Prontuario prontuario;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "codigo_medico")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cpf_medico")
 	private Medico medico;
 
 	private String observacao;
@@ -38,7 +40,6 @@ public class Consulta implements Serializable {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-
 
 	public Long getId() {
 		return id;

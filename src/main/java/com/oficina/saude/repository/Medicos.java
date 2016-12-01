@@ -6,4 +6,6 @@ import com.oficina.saude.model.Medico;
 
 public interface Medicos extends JpaRepository<Medico,Long>{
 
+	public Medico findOneByUsuarioEmail(String email);
+	
 }

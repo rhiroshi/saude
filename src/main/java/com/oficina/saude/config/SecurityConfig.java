@@ -39,11 +39,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
+				.antMatchers("/consulta/**").hasAnyAuthority("MEDICO","ADMIN")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
 				.loginPage("/login")
 				.permitAll()
+				.and()
+			.exceptionHandling()
+				.accessDeniedPage("/403")
 				.and()
 			.csrf().disable();
 	}
