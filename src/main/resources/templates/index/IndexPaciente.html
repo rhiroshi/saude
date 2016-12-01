@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+	
+<head>
+	<title>Unidade de Saúde</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/dashboard-paciente.css"/>
+</head>
+<body>
+<section class="aw-layout-content  js-content" layout:fragment="conteudo">
+
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Unidade de Saúde
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="col-md-10 col-md-offset-1">
+
+            <div class="panel panel-default panel-table">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col col-xs-6">
+                    <h3 class="panel-title">Consultas realizadas</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped table-bordered table-list">
+                  <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Médico</th>
+                        <th>Data</th>
+                        <th>Observação</th>
+                    </tr> 
+                  </thead>
+                  <tbody>
+                  	<th:block th:each="consulta,status : ${consultas}">
+                          <tr>
+                            <th align="center" th:text="|${status.index + 1	}|" ></th>
+                            <td th:text="${consulta.medico.nome}"></td>
+                            <td th:text="${consulta.prontuario.data}"></td>
+                            <td>
+                              <a class="btn btn-default" data-toggle="modal" data-target="#ModalObservacaoPesquisa"
+										th:attr="data-observacao=${consulta.observacao}"
+											title="Descricao" rel="tooltip" data-placement="top"><em class="glyphicon glyphicon-search"></em></a></td>
+                          </tr>
+                    </th:block>
+                  </tbody>
+                </table>
+            
+              </div>
+            </div>
+
+</div>
+	</div>
+	
+		<div layout:include="index/ModalObservacaoPesquisa"></div>
+
+</section>
+
+		<th:block layout:fragment="javascript-extra">
+			<script src="/javascripts/descricao-consulta.js"></script>
+		</th:block>
+</body>
+</html>
