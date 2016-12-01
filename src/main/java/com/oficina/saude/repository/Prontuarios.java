@@ -23,4 +23,5 @@ public interface Prontuarios extends JpaRepository<Prontuario, Long>{
 	public void deleteByPaciente(Paciente paciente);
 	
 	public Long countByData(Date data);
+	
 }

@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "consulta")
 public class Consulta implements Serializable {
@@ -32,14 +31,6 @@ public class Consulta implements Serializable {
 	private Medico medico;
 
 	private String observacao;
-	
-	public String getObservacao() {
-		return observacao;
-	}
-
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
-	}
 
 	public Long getId() {
 		return id;
@@ -63,6 +54,14 @@ public class Consulta implements Serializable {
 
 	public void setMedico(Medico medico) {
 		this.medico = medico;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 	@Override

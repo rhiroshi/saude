@@ -23,18 +23,18 @@
 	
 		<form method="POST" class="form-vertical  js-form-loading" th:action="@{/consulta/salvar}" th:object="${consulta}">
 			
-			<!-- <th:block th:include="fragments/MensagemSucesso"></th:block> 
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
-			 -->
+		
 			 <div class="form-group">
 			 	<label>Nome do Médico</label>
-			 	<input disabled="disabled" type="text" class="form-control" th:value="${medicos.nome}" />
+			 	<input disabled="disabled" type="text" class="form-control" th:value="${consulta.medico.nome}" />
+			 	<input type="hidden" th:field="*{medico}" />			 	
 			 </div>
 			 
 			 <div class="form-group">
 			 	<label>Nome do Paciente</label>
-			 	<input disabled="disabled" type="text" class="form-control" th:value="${prontuarios.paciente.nome}"/>
-				<input type="hidden" th:value="${prontuarios.id}" th:field="*{prontuario.id}"/>
+			 	<input disabled="disabled" type="text" class="form-control" th:value="${consulta.prontuario.paciente.nome}" />
+			 	<input type="hidden" th:field="*{prontuario}" />
 			 </div>
 			 
 			<div class="form-group">

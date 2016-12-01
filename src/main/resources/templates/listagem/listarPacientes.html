@@ -2,7 +2,8 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/LayoutPadrao">
+	layout:decorator="layout/LayoutPadrao"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	
 <head>
 	<title>Listagem de Pacientes</title>
@@ -29,7 +30,7 @@
 						<th class="text-center">CPF</th>
 						<th class="text-center">CNS</th>
 						<th class="text-center">Data Nascimento</th>
-						<th class="text-center">Ações</th>
+						<th class="text-center" sec:authorize="hasAuthority('ADMIN')">Ações</th>
 					</tr>
 				</thead>
 				
@@ -40,7 +41,7 @@
 					<td class="text-center" th:text="${paciente.cpf}"></td>
 					<td class="text-center" th:text="${paciente.cns}"></td>
 					<td class="text-center" th:text="${paciente.dataNascimento}"></td>
-					<td class="text-right">
+					<td class="text-right" sec:authorize="hasAuthority('ADMIN')">
 								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#ModalExcluirPaciente"
 										th:attr="data-cpf=${paciente.cpf}, data-nome=${paciente.nome}"
 											title="Excluir" rel="tooltip" data-placement="top">

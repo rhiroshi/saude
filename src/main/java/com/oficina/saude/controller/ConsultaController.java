@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.oficina.saude.model.Consulta;
 import com.oficina.saude.model.Prontuario;
 import com.oficina.saude.model.Status;
+import com.oficina.saude.repository.Consultas;
 import com.oficina.saude.repository.Medicos;
 import com.oficina.saude.repository.Prontuarios;
 
@@ -26,14 +27,18 @@ public class ConsultaController {
 	@Autowired
 	private Medicos medicos;
 	
+	@Autowired
+	private Consultas consultas;
+	
 	@RequestMapping(value = "/atender/{id}", method = RequestMethod.GET)
 	public ModelAndView atender(@PathVariable Long id) {
 		ModelAndView mv = new ModelAndView("consulta/AtendimentoConsulta");
 		SecurityContext context = SecurityContextHolder.getContext();
-		
-		mv.addObject("medicos", medicos.findOneByUsuarioEmail(context.getAuthentication().getName()));
-		mv.addObject("prontuarios", prontuarios.findOne(id));
-		mv.addObject("consulta", new Consulta());
+		Consulta consulta = new Consulta();
+		consulta.setMedico(medicos.findOneByUsuarioEmail(context.getAuthentication().getName()));
+		consulta.setProntuario(prontuarios.findOne(id));
+
+		mv.addObject("consulta", consulta);
 		return mv;
 	}
 	
@@ -54,11 +59,11 @@ public class ConsultaController {
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public ModelAndView salvar(Consulta consulta, RedirectAttributes attributes) {
-		SecurityContext context = SecurityContextHolder.getContext();
-		consulta.setMedico(medicos.findOneByUsuarioEmail(context.getAuthentication().getName()));
-		System.out.println("medico: " + consulta.getMedico().getCpf());
-		System.out.println("prontu: " + consulta.getProntuario().getId());
-		System.out.println("observa: " + consulta.getObservacao());
+		Prontuario prontuario = consulta.getProntuario();
+		prontuario.setStatus(Status.ATENDIDO);
+		consulta.setProntuario(prontuario);
+		consultas.save(consulta);
+		
 		return new ModelAndView("redirect:/consulta/pendentes");
 	}
 	

@@ -1,7 +1,7 @@
 create table consulta (
 	id serial primary key,
 	codigo_prontuario integer not null,
-	cpf_medico integer not null,
+	cpf_medico BIGINT not null,
 	prescricao TEXT
 );
 

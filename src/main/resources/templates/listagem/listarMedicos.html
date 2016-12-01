@@ -2,7 +2,8 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/LayoutPadrao">
+	layout:decorator="layout/LayoutPadrao"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	
 <head>
 	<title>Listagem de Medicos</title>
@@ -39,7 +40,7 @@
 					<td class="text-center" th:text="${medico.cpf}"></td>
 					<td class="text-center" th:text="${medico.crm}"></td>
 					<td class="text-center" th:text="${medico.dataNascimento}"></td>
-					<td class="text-right">
+					<td class="text-right" sec:authorize="hasAuthority('ADMIN')">
 								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#ModalExcluirMedico"
 										th:attr="data-cpf=${medico.cpf}, data-nome=${medico.nome}"
 											title="Excluir" rel="tooltip" data-placement="top">

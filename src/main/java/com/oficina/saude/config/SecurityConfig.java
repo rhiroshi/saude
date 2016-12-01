@@ -39,7 +39,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/consulta/**").hasAnyAuthority("MEDICO","ADMIN")
+				.antMatchers("/medicos/novo","/farmaceuticos/novo","/pacientes/novo").hasAuthority("ADMIN")
+				.antMatchers("/consulta/**").hasAuthority("MEDICO")
+				.antMatchers("/medicos/edit/**", "/medicos/excluir/**").hasAuthority("ADMIN")
+				.antMatchers("/farmaceuticos/edit/**", "/farmaceuticos/excluir/**").hasAuthority("ADMIN")
+				.antMatchers("/pacientes/edit/**", "/pacientes/excluir/**").hasAuthority("ADMIN")
+				.antMatchers("/prontuarios/**").hasAnyAuthority("ADMIN", "FARMACO")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

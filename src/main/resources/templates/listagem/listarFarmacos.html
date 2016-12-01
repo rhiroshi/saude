@@ -2,7 +2,8 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/LayoutPadrao">
+	layout:decorator="layout/LayoutPadrao"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	
 <head>
 	<title>Listagem de Farmacos</title>
@@ -39,7 +40,7 @@
 					<td class="text-center" th:text="${farmaco.cpf}"></td>
 					<td class="text-center" th:text="${farmaco.crf}"></td>
 					<td class="text-center" th:text="${farmaco.dataNascimento}"></td>
-					<td class="text-right">
+					<td class="text-right" sec:authorize="hasAuthority('ADMIN')">
 								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#ModalExcluirFarmaco"
 										th:attr="data-cpf=${farmaco.cpf}, data-nome=${farmaco.nome}"
 											title="Excluir" rel="tooltip" data-placement="top">
