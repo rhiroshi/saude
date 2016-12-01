@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.oficina.saude.model.Consulta;
+import com.oficina.saude.model.Paciente;
 import com.oficina.saude.model.Status;
 
 public class ConsultasImpl implements ConsultasQueries{
@@ -14,10 +15,10 @@ public class ConsultasImpl implements ConsultasQueries{
 	private EntityManager manager;
 
 	@Override
-	public List<Consulta> consultasRealizadas() {
+	public List<Consulta> consultasRealizadas(Paciente paciente) {
 		return manager
-				.createQuery("from Consulta where prontuario.status = :status", Consulta.class)
-				.setParameter("status", Status.ATENDIDO)
+				.createQuery("from Consulta where prontuario.status = :status and prontuario.paciente = :paciente", Consulta.class)
+				.setParameter("status", Status.ATENDIDO).setParameter("paciente", paciente)
 				.getResultList();
 	}
 	

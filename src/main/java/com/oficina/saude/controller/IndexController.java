@@ -9,10 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.oficina.saude.model.Roles;
+import com.oficina.saude.model.Paciente;
+import com.oficina.saude.model.Usuario;
 import com.oficina.saude.repository.Consultas;
 import com.oficina.saude.repository.Pacientes;
 import com.oficina.saude.repository.Prontuarios;
+import com.oficina.saude.repository.Usuarios;
 
 @Controller
 @RequestMapping("/index")
@@ -20,6 +22,9 @@ public class IndexController {
 
 	@Autowired
 	private Pacientes pacientes;
+	
+	@Autowired
+	private Usuarios usuarios;
 	
 	@Autowired
 	private Prontuarios prontuarios;
@@ -33,9 +38,12 @@ public class IndexController {
 		SecurityContext context = SecurityContextHolder.getContext();
 		String comparar = context.getAuthentication().getAuthorities().toString();
 		if(comparar.equals("[PACIENTE]")){
+			String email = context.getAuthentication().getName().toString();
+			Usuario usuario = usuarios.findOne(email);
+			Paciente paciente = pacientes.findByUsuario(usuario);
 			// --- PACIENTE ACESSANDO  ---
 			mv = new ModelAndView("/index/IndexPaciente");
-			mv.addObject("consultas", consultas.consultasRealizadas());
+			mv.addObject("consultas", consultas.consultasRealizadas(paciente));
 		}else{
 			// --- OUTROS FUNCIONARIOS ---
 			java.util.Date udata = new java.util.Date();
