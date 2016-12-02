@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	
+<head>
+	<title>Listagem de Medicamentos</title>
+	
+	<link rel="stylesheet" type="text/css" href="/stylesheets/largura-tabelas.css"/>
+</head>
+<body>
+<section class="aw-layout-content  js-content" layout:fragment="conteudo">
+
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Listagem de Medicamentos
+			</h1>
+		</div>
+	</div>
+			<th:block th:include="fragments/MensagemSucesso"></th:block> 
+
+	<div class="container-fluid">
+	<div class="table-responsive bw-tabela-simples">
+			<table class="table table-hover" >
+				<thead>
+					<tr>
+						<th class="text-center">Nome</th>
+						<th class="text-center">Estoque</th>
+						<th class="text-center">Total de Reservas</th>
+						<th class="text-center" >Ações</th>
+					</tr>
+				</thead>
+				
+				<tbody class="js-lista-paciente">
+					<th:block th:each="produto : ${produtos}">
+					<tr>
+					<th class="text-center largura-nome-produto" th:text="${produto.nome}"></th>
+					<td class="text-center largura-estoque" th:text="${produto.estoque}"></td>
+					<td class="text-center largura-reserva" th:text="${produto.reserva}"></td>
+					<td class="text-center largura-acoes" >
+								<a class="btn btn-link btn-xs"> <!--  data-toggle="modal" data-target="#ModalExcluirPaciente"
+										th:attr="data-cpf=${paciente.cpf}, data-nome=${paciente.nome}"
+											title="Excluir" rel="tooltip" data-placement="top" -->
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+								<a class="btn btn-link btn-xs">
+									<!-- th:href="@{edit/{cpf}(cpf=${paciente.cpf})}"
+									title="Editar" rel="tooltip" data-placement="top"> --> 
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+					</td>
+					</tr>
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+		<div layout:include="paciente/ModalExcluirPaciente"></div>
+		
+</section>
+
+<th:block layout:fragment="javascript-extra">
+	<script src="/javascripts/exclui-paciente.js"></script>
+</th:block>
+</body>
+</html>

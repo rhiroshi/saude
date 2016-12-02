@@ -2,7 +2,8 @@ $(function(){
 	/* #### Função busca paciente #### */
 	//Pesquisar os cursos sem refresh na página
 	$("#amostra").keyup(function(){
-		var url = 'http://localhost:8080/pacientes/pesquisa';
+		var url = document.location.origin + "/pacientes/pesquisa";
+
 		var pesquisa = $(this).val().trim();
 		var listaPacientes = $('#lista-paciente');
 		

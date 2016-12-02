@@ -2,6 +2,7 @@ var Prontuarios = (function(){
     function Prontuarios(){
         this.comboStatus = $('#status-prontuario');
         this.listaPaciente = $('.js-lista-paciente');
+        this.url = document.location.origin + '/prontuarios/lista';
     }
     
     Prontuarios.prototype.iniciar = function(){
@@ -10,9 +11,10 @@ var Prontuarios = (function(){
     
     function onStatusSelecionado(){
     	var status = this.comboStatus.val();
+    	
         if(status){
             $.ajax({
-                url: 'http://localhost:8080/prontuarios/lista',
+                url: this.url,
                 method: 'POST',
     			data: {status:status},
                 success: onProntuariosRetornados.bind(this)

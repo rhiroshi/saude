@@ -22,7 +22,7 @@
 
 	<div class="container-fluid">
 	
-		<form method="POST" th:object="${prontuario}" th:action="@{/prontuarios/novo}" autocomplete="off" class="form-vertical  js-form-loading">
+		<form id="form" method="POST" th:object="${prontuario}" th:action="@{/prontuarios/novo}" autocomplete="off" class="form-vertical  js-form-loading">
 			
 			<th:block th:include="fragments/MensagemSucesso"></th:block> 
 			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
