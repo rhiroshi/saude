@@ -12,10 +12,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oficina.saude.model.Consulta;
 import com.oficina.saude.model.Prontuario;
+import com.oficina.saude.model.Receita;
 import com.oficina.saude.model.Status;
 import com.oficina.saude.repository.Consultas;
 import com.oficina.saude.repository.Medicos;
 import com.oficina.saude.repository.Prontuarios;
+import com.oficina.saude.repository.Receitas;
 
 @Controller
 @RequestMapping("/consulta")
@@ -26,6 +28,9 @@ public class ConsultaController {
 	
 	@Autowired
 	private Medicos medicos;
+	
+	@Autowired
+	private Receitas receitas;
 	
 	@Autowired
 	private Consultas consultas;
@@ -62,6 +67,11 @@ public class ConsultaController {
 		Prontuario prontuario = consulta.getProntuario();
 		prontuario.setStatus(Status.ATENDIDO);
 		consulta.setProntuario(prontuario);
+		Receita receita = receitas.findOne(consulta.getReceita().getCodigo());
+		receita.setConsulta(consulta);
+		consultas.save(consulta);
+		Receita rec = receitas.save(receita);
+		consulta.setReceita(rec);
 		consultas.save(consulta);
 		
 		return new ModelAndView("redirect:/consulta/pendentes");

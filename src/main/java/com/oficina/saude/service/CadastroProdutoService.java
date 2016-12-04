@@ -1,5 +1,7 @@
 package com.oficina.saude.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class CadastroProdutoService {
 	
 	public void salvar(Produto produto) {
 		produtos.save(produto);
+	}
+	
+	public List<Produto> pesquisar(String nome){
+		return produtos.findByNomeIgnoreCaseContaining(nome);
 	}
 	
 }

@@ -1,0 +1,7 @@
+.escondido{
+	display:none;
+}
+#prescricoes span{
+	display:block;
+	background-color:white-smoke;
+}

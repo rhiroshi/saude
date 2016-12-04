@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/lista-medicamentos.css"/>
+<div class="modal fade" id="ModalAdicionarPrescricao" tabindex="-1" data-keyboard="" data-backdrop="static">
+	<div class="modal-dialog">
+  		<form th:attr="data-url-base=@{/consulta/adicionarMedicamento}" method="POST">
+		    <div class="modal-content">
+		    	<div class="modal-header">		        	
+		        	<h4 class="modal-title">Prescrever Medicamento</h4>
+		      	</div>
+		      	<div class="modal-body">
+		      		<div class="form-group">
+			      		<div class="row">
+				      		<div class="col-sm-6">
+				      			<label for="procuraMedicamento">Medicamento</label>
+				        		<input type="text" class="form-control" id="procuraMedicamento" autocomplete="off" placeholder="Digite o nome do medicamento"/>
+				        		<input type="hidden" id="idMedicamento"/>
+				        		<div id="lista-medicamentos"></div>
+				        	</div>
+				        	<div id="info-medicamento" class="col-sm-6">
+				        	</div>
+			        	</div>
+			        </div>
+			        <div class="form-group">
+			        	<div class="row">
+			        		<div class="col-sm-2">
+			        			<label for="qtdMedicamento">Quantidade</label>
+			        			<input type="text" class="form-control" id="qtdMedicamento"/>
+			        		</div>
+			        	</div>
+			        </div>
+		      	</div>
+		      	<div class="modal-footer">
+		        	<button id="btnEnviar" type="button" class="btn btn-primary">Adicionar</button>
+		        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		      	</div>
+		    </div><!-- /.modal-content -->
+    	</form>
+  	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</html>

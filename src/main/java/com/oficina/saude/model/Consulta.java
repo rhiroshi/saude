@@ -2,6 +2,7 @@ package com.oficina.saude.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,7 @@ public class Consulta implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Long id;
 	
 	@OneToOne(fetch = FetchType.LAZY)
@@ -32,6 +34,9 @@ public class Consulta implements Serializable {
 
 	private String observacao;
 
+	@OneToOne(mappedBy="consulta")
+	private Receita receita;
+	
 	public Long getId() {
 		return id;
 	}
@@ -87,6 +92,14 @@ public class Consulta implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Receita getReceita() {
+		return receita;
+	}
+
+	public void setReceita(Receita receita) {
+		this.receita = receita;
 	}
 	
 }

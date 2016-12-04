@@ -6,6 +6,7 @@
 	
 <head>
 	<title>Atendimento da consulta</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/receitas.css"/>
 </head>
 <body>
 <section class="aw-layout-content  js-content" layout:fragment="conteudo">
@@ -38,8 +39,21 @@
 			 </div>
 			 
 			<div class="form-group">
-				<label for="descrica-consulta">Descrição da consulta</label>
-				<textarea id="descricao-consulta" class="form-control" th:field="*{observacao}"></textarea>
+				<div class="row">
+					<div class="col-sm-6">
+						<label for="descrica-consulta">Descrição da consulta</label>
+						<textarea id="descricao-consulta" class="form-control" th:field="*{observacao}"></textarea>
+					</div>
+					<div class="col-sm-3">
+						<button class="btn  btn-primary" type="button" data-toggle="modal" th:attr="data-idConsulta=${id}"
+						data-target="#ModalAdicionarPrescricao" rel="tooltip" data-placement="top">Adicionar Prescrição</button>
+					</div>
+					<div id="prescricoes" class="escondido col-sm-3">
+					<input id="receitaConsulta" type="hidden" th:field="*{receita}"/>
+				        <h3>Medicamentos</h3>
+						
+					</div>
+				</div>
 			</div>
 			
 			<div class="form-group">
@@ -50,7 +64,11 @@
 		</form>
 	</div>
 
+		<div layout:include="consulta/ModalAdicionarPrescricao"></div>
 </section>
 
+<th:block layout:fragment="javascript-extra">
+	<script src="/javascripts/adicionar-prescricao.js"></script>
+</th:block>
 </body>
 </html>

@@ -1,0 +1,13 @@
+.margem-lista {
+	border: 1px solid black;
+	background: white;
+}
+#lista-medicamentos span {
+	display: block;	
+}
+
+#lista-medicamentos span:hover {
+	background: whitesmoke;
+	cursor: pointer;
+	font-weight: bold;
+}
