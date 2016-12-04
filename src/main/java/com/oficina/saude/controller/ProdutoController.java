@@ -3,6 +3,7 @@ package com.oficina.saude.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,6 +56,16 @@ public class ProdutoController {
 		mv.addObject("produtos", produtos.findAll());
 		
 		return mv;
+	}
+	
+	@RequestMapping(value = "/abastecer", method=RequestMethod.POST)
+	public ResponseEntity<?> abastecer(Long codigo, Integer estoque){
+		System.out.println(codigo + " - " +estoque);
+		Produto produto = produtos.findOne(codigo);
+		produto.setEstoque(estoque);
+		produtos.save(produto);
+		
+		return ResponseEntity.ok(produto);
 	}
 	
 }

@@ -9,6 +9,7 @@
 	<title>Listagem de Medicamentos</title>
 	
 	<link rel="stylesheet" type="text/css" href="/stylesheets/largura-tabelas.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/ajustes-campos.css"/>
 </head>
 <body>
 <section class="aw-layout-content  js-content" layout:fragment="conteudo">
@@ -39,19 +40,25 @@
 					<th:block th:each="produto : ${produtos}">
 					<tr>
 					<th class="text-center largura-nome-produto" th:text="${produto.nome}"></th>
-					<td class="text-center largura-estoque" th:text="${produto.estoque}"></td>
+					<td th:id="|estoque-${produto.codigo}|" class="text-center largura-estoque" th:text="${produto.estoque}"></td>
 					<td class="text-center largura-reserva" th:text="${produto.reserva}"></td>
 					<td class="text-center largura-acoes" >
-								<a class="btn btn-link btn-xs"> <!--  data-toggle="modal" data-target="#ModalExcluirPaciente"
+								<a class="btn btn-link btn-xs" title="Excluir"> <!--  data-toggle="modal" data-target="#ModalExcluirPaciente"
 										th:attr="data-cpf=${paciente.cpf}, data-nome=${paciente.nome}"
 											title="Excluir" rel="tooltip" data-placement="top" -->
 									<span class="glyphicon glyphicon-remove"></span>
 								</a>
-								<a class="btn btn-link btn-xs">
+								<a class="btn btn-link btn-xs" title="Editar">
 									<!-- th:href="@{edit/{cpf}(cpf=${paciente.cpf})}"
 									title="Editar" rel="tooltip" data-placement="top"> --> 
 									<span class="glyphicon glyphicon-pencil"></span>
 								</a>
+								<a id="modalAbastecer" class="btn btn-link btn-xs" title="Abastecer" data-toggle="modal"
+									data-target="#ModalAbastecerMedicamento" 
+									th:attr="data-nome=${produto.nome}, data-codigo=${produto.codigo}, data-estoque=${produto.estoque}">
+									<span class="glyphicon glyphicon-plus"></span>
+								</a>
+								
 					</td>
 					</tr>
 					</th:block>
@@ -59,13 +66,15 @@
 			</table>
 		</div>
 	</div>
-
-		<div layout:include="paciente/ModalExcluirPaciente"></div>
+		
+		<div layout:include="produto/ModalAbastecerMedicamento"></div>
 		
 </section>
 
 <th:block layout:fragment="javascript-extra">
 	<script src="/javascripts/exclui-paciente.js"></script>
+	<script src="/javascripts/modal-abastece-medicamento.js"></script>
+	
 </th:block>
 </body>
 </html>

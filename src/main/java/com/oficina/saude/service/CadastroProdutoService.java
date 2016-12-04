@@ -14,6 +14,6 @@ public class CadastroProdutoService {
 	
 	public void salvar(Produto produto) {
 		produtos.save(produto);
-	}
+	} 
 	
 }
