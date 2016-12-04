@@ -16,7 +16,7 @@ public class CadastroProdutoService {
 	
 	public void salvar(Produto produto) {
 		produtos.save(produto);
-	}
+	} 
 	
 	public List<Produto> pesquisar(String nome){
 		return produtos.findByNomeIgnoreCaseContaining(nome);
