@@ -30,7 +30,7 @@
 				
 					<li class="aw-menu__item" sec:authorize="hasAnyAuthority('FARMACO','ADMIN')">
 						<a href="#">
-							<i class="fa  fa-fw  fa-file-text"></i><span>Prontuarios</span>
+							<i class="glyphicon glyphicon-folder-open"></i><span>Prontuarios</span>
 							<i class="aw-menu__navigation-icon  fa"></i>
 						</a>
 					
@@ -42,20 +42,20 @@
 					</li>
 					<li class="aw-menu__item" sec:authorize="hasAnyAuthority('ADMIN','FARMACO','MEDICO')">
 						<a href="#">
-							<i class="fa  fa-fw  fa-file-text"></i><span>Listagens</span>
+							<i class="glyphicon glyphicon-list-alt"></i><span>Listagens</span>
 							<i class="aw-menu__navigation-icon  fa"></i>
 						</a>
 					
 						<ul class="aw-menu__list  aw-menu__list--sublist">
 							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/pacientes/lista}">Lista de Pacientes</a></li>	
 							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/medicos/lista}">Lista de Médicos</a></li>		
-							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/farmaceuticos/lista}">Lista de Farmacos</a></li>							
-							
+							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/farmaceuticos/lista}">Lista de Farmacos</a></li>	
+							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/produtos}">Lista de Medicamentos</a></li>
 						</ul>
 					</li>
 					<li class="aw-menu__item" sec:authorize="hasAnyAuthority('MEDICO','ADMIN')">
 						<a href="#">
-							<i class="fa  fa-fw  fa-file-text"></i><span>Administração de Consultas</span>
+							<i class="glyphicon glyphicon-copy"></i><span>Administração de Consultas</span>
 							<i class="aw-menu__navigation-icon  fa"></i>
 						</a>
 					
@@ -63,18 +63,16 @@
 							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/consulta/pendentes}">Consultas Pendentes</a></li>
 						</ul>
 					</li>
-					<li class="aw-menu__item is-expanded" >
+					<li class="aw-menu__item is-expanded" sec:authorize="hasAuthority('ADMIN')">
 						<a href="#">
-							<i class="fa  fa-fw  fa-file-text"></i><span>Gerenciamento de Estoque de Medicamentos</span>
+							<i class="glyphicon glyphicon-cog"></i><span>Gerenciamento de Estoque de Medicamentos</span>
 							<i class="aw-menu__navigation-icon  fa"></i>
 						</a>
 					
-						<ul class="aw-menu__list  aw-menu__list--sublist">
+						<ul class="aw-menu__list  aw-menu__list--sublist" >
 							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/produtos/novo}">Cadastrar Medicamentos</a></li>
 						</ul>
-						<ul class="aw-menu__list  aw-menu__list--sublist">
-							<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/produtos}">Listar Estoque</a></li>
-						</ul>
+						
 					</li>
 					
 				</ul>

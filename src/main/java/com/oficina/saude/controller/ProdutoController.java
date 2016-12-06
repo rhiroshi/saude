@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,8 +31,7 @@ public class ProdutoController {
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(Produto produto) {
-		ModelAndView mv = new ModelAndView("/produto/CadastroProduto");
-		
+		ModelAndView mv = new ModelAndView("/produto/CadastroProduto");	
 		return mv;
 	}
 	
@@ -41,8 +41,9 @@ public class ProdutoController {
 			return novo(produto);
 		}
 		try {
-			produto.setEstoque(0);
-			produto.setReserva(0);
+			if (produto.getCodigo() == null) {
+				produto.setEstoque(0);				
+			}
 			cadastroProdutoService.salvar(produto);
 			attributes.addFlashAttribute("mensagem","Medicamento cadastrado com sucesso!");
 			return new ModelAndView("redirect:/produtos/novo");
@@ -56,8 +57,7 @@ public class ProdutoController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView listaProdutos(){
 		ModelAndView mv = new ModelAndView("/listagem/listarProdutos");
-		mv.addObject("produtos", produtos.findAll());
-		
+		mv.addObject("produtos", cadastroProdutoService.findAllOrdenado());	
 		return mv;
 	}
 
@@ -68,11 +68,17 @@ public class ProdutoController {
 	
 	@RequestMapping(value = "/abastecer", method=RequestMethod.POST)
 	public ResponseEntity<?> abastecer(Long codigo, Integer estoque){
-		System.out.println(codigo + " - " +estoque);
 		Produto produto = produtos.findOne(codigo);
 		produto.setEstoque(estoque);
 		produtos.save(produto);
 		
 		return ResponseEntity.ok(produto);
+	}
+	
+	@RequestMapping(value = "/editar/{codigo}")
+	public ModelAndView editar(@PathVariable("codigo") Produto produto) {
+		ModelAndView mv = new ModelAndView("/produto/CadastroProduto");	
+		mv.addObject(produto);
+		return mv;
 	}
 }

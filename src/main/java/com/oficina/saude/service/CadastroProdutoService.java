@@ -22,4 +22,8 @@ public class CadastroProdutoService {
 		return produtos.findByNomeIgnoreCaseContaining(nome);
 	}
 	
+	public List<Produto> findAllOrdenado() {
+		return produtos.findAllByOrderByCodigoAsc();
+	}
+	
 }

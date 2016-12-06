@@ -40,6 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/medicos/novo","/farmaceuticos/novo","/pacientes/novo").hasAuthority("ADMIN")
+				.antMatchers("/produtos/abastecer").hasAnyAuthority("ADMIN","FARMACO")
+				.antMatchers("/produtos/novo","/produtos/editar/**").hasAuthority("ADMIN")
 				.antMatchers("/consulta/**").hasAuthority("MEDICO")
 				.antMatchers("/medicos/edit/**", "/medicos/excluir/**").hasAuthority("ADMIN")
 				.antMatchers("/farmaceuticos/edit/**", "/farmaceuticos/excluir/**").hasAuthority("ADMIN")

@@ -31,8 +31,7 @@
 					<tr>
 						<th class="text-center">Nome</th>
 						<th class="text-center">Estoque</th>
-						<th class="text-center">Total de Reservas</th>
-						<th class="text-center" >Ações</th>
+						<th class="text-center" sec:authorize="hasAnyAuthority('ADMIN','FARMACO')">Ações</th>
 					</tr>
 				</thead>
 				
@@ -41,16 +40,10 @@
 					<tr>
 					<th class="text-center largura-nome-produto" th:text="${produto.nome}"></th>
 					<td th:id="|estoque-${produto.codigo}|" class="text-center largura-estoque" th:text="${produto.estoque}"></td>
-					<td class="text-center largura-reserva" th:text="${produto.reserva}"></td>
-					<td class="text-center largura-acoes" >
-								<a class="btn btn-link btn-xs" title="Excluir"> <!--  data-toggle="modal" data-target="#ModalExcluirPaciente"
-										th:attr="data-cpf=${paciente.cpf}, data-nome=${paciente.nome}"
-											title="Excluir" rel="tooltip" data-placement="top" -->
-									<span class="glyphicon glyphicon-remove"></span>
-								</a>
-								<a class="btn btn-link btn-xs" title="Editar">
-									<!-- th:href="@{edit/{cpf}(cpf=${paciente.cpf})}"
-									title="Editar" rel="tooltip" data-placement="top"> --> 
+					<td class="text-center largura-acoes" sec:authorize="hasAnyAuthority('ADMIN','FARMACO')">
+								<a class="btn btn-link btn-xs" 
+									th:href="@{/produtos/editar/{codigo}(codigo=${produto.codigo})}"
+									title="Editar" rel="tooltip" data-placement="top" sec:authorize="hasAuthority('ADMIN')">
 									<span class="glyphicon glyphicon-pencil"></span>
 								</a>
 								<a id="modalAbastecer" class="btn btn-link btn-xs" title="Abastecer" data-toggle="modal"
