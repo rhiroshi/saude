@@ -68,6 +68,7 @@ var ListaMedicamentos = (function(){
 	function ListaMedicamentos(){
 		this.listaMedicamentos = $("#lista-medicamentos");
 		this.inputMedicamento = $("#procuraMedicamento");
+		this.estoqueMedicamento;
 		this.url = document.location.origin;
 	}
 	
@@ -94,7 +95,8 @@ var ListaMedicamentos = (function(){
 			this.listaMedicamentos.removeClass('margem-lista');
 		}else{
 			medicamentos.forEach(function(medicamento){
-				spanM = "<span id=" + medicamento.codigo + ">"+medicamento.nome+"</span>";
+				spanM = "<span id=" + medicamento.codigo+':'+medicamento.estoque + " >"+medicamento.nome+"</span>";
+				
 				this.listaMedicamentos.append(spanM);
 			}.bind(this));
 		}
@@ -102,10 +104,14 @@ var ListaMedicamentos = (function(){
 	
 	function escolheMedicamento(e){
 		var nome = e.target.innerHTML;
-		var id = e.target.id;
+		var split = [];
+		split = e.target.id.split(':');
+		var id = split[0];
+		var estoque = split[1];
 		var info1 = "<h4>Informações do medicamento</h4>";
 		var info2 = '<label id="info-nome-medicamento">Nome do medicamento: '+nome+'</label>';
-		var info3 = "<label>ID do medicamento:"+id+"</label>";
+		var info3 = "<label>ID do medicamento: "+id+"</label>";
+		var info4 = "<label>Quantidade em estoque: "+estoque+"</label>";
 		this.inputMedicamento.val(nome);
 		$('#idMedicamento').val(id);
 		this.listaMedicamentos.empty();
@@ -115,6 +121,7 @@ var ListaMedicamentos = (function(){
 		infos.append(info1);
 		infos.append(info2);
 		infos.append(info3);
+		infos.append(info4);
 	}
 	
 	return ListaMedicamentos;
