@@ -50,7 +50,11 @@
                             <td>
                               <a class="btn btn-default" data-toggle="modal" data-target="#ModalObservacaoPesquisa"
 										th:attr="data-observacao=${consulta.observacao}"
-											title="Descricao" rel="tooltip" data-placement="top"><em class="glyphicon glyphicon-search"></em></a></td>
+											title="Descricao" rel="tooltip" data-placement="top"><em class="glyphicon glyphicon-search"></em></a>
+							 	<a class="btn btn-default" data-toggle="modal" data-target="#ModalMostraReceita"
+										th:attr="data-receita=${consulta.receita.pedidos}"
+											title="Receita" rel="tooltip" data-placement="top"><em class="fa fa-medkit"></em></a>
+							</td>
                           </tr>
                     </th:block>
                   </tbody>
@@ -63,11 +67,13 @@
 	</div>
 	
 		<div layout:include="index/ModalObservacaoPesquisa"></div>
+		<div layout:include="index/ModalMostraReceita"></div>
 
 </section>
 
 		<th:block layout:fragment="javascript-extra">
 			<script src="/javascripts/descricao-consulta.js"></script>
+			<script src="/javascripts/mostra-receita.js"></script>
 		</th:block>
 </body>
 </html>
