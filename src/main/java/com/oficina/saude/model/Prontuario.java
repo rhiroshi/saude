@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "prontuario")
+
 public class Prontuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;

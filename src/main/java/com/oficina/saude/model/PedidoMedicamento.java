@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="pedido_medicamento")
 public class PedidoMedicamento {
@@ -21,7 +23,8 @@ public class PedidoMedicamento {
 	private Produto produto;
 	
 	private int quantidade;
-	
+
+	@JsonManagedReference //Usar na tabela que tem a FK
 	@ManyToOne
 	@JoinColumn(name="receita")
 	private Receita receita;

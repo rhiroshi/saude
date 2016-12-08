@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "consulta")
 public class Consulta implements Serializable {
@@ -24,16 +26,17 @@ public class Consulta implements Serializable {
 	@Column(name="id")
 	private Long id;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "codigo_prontuario")
 	private Prontuario prontuario;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cpf_medico")
 	private Medico medico;
 
 	private String observacao;
 
+	@JsonBackReference
 	@OneToOne(mappedBy="consulta")
 	private Receita receita;
 	

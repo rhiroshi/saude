@@ -11,6 +11,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="receita")
 public class Receita implements Serializable{
@@ -20,10 +23,12 @@ public class Receita implements Serializable{
 	@Id
 	private Long codigo;
 	
+	@JsonManagedReference
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="consulta")
 	private Consulta consulta;
-	
+
+	@JsonBackReference
 	@OneToMany(mappedBy="receita")
 	private List<PedidoMedicamento> pedidos;
 

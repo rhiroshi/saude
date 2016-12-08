@@ -1,12 +1,9 @@
 var MostraReceita = (function(){
 	function MostraReceita(){
 		this.codigoReceita;
-		this.receita;
+		this.tabela = $('#tabela-receita tbody');
 	}
 	
-	MostraReceita.prototype.iniciar = function(){
-		
-	};
 	
 	MostraReceita.prototype.abrirModal = (function(rec){
 		this.codigoReceita = rec;
@@ -19,9 +16,12 @@ var MostraReceita = (function(){
 		})
 	});
 	
-	function onReceitaRetornada(receita){
-		this.receita = receita;
-		console.log(receita);
+	function onReceitaRetornada(medicamentos){
+		medicamentos.forEach(function(medicamento){
+			var td1 = '<td>'+medicamento.produto.nome+'</td>';
+			var td2 = '<td>'+medicamento.quantidade+'</td>';
+			this.tabela.append('<tr>'+td1+td2+'</tr>');
+		}.bind(this));
 	}
 	
 	return MostraReceita;
@@ -29,7 +29,6 @@ var MostraReceita = (function(){
 
 $(function(){
 	var mostraReceita = new MostraReceita();
-	mostraReceita.iniciar();
 	$('#ModalMostraReceita').on('show.bs.modal', function(event){
 		var button = $(event.relatedTarget);
 		receita = button.data('receita');

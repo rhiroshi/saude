@@ -32,8 +32,7 @@ var NovoMedicamento = (function(){
 						receita:rreceita,
 						produto:pproduto,
 						quantidade:this.qtdMedicamento.val()
-					}),
-					success:onMedicamentoAdicionado.bind(this)
+					})
 				})
 				var prescricoes = $('#prescricoes');
 				$('#receitaConsulta').val(this.idConsulta);
@@ -55,9 +54,6 @@ var NovoMedicamento = (function(){
 		$("#info-medicamento").empty();
 	}
 	
-	function onMedicamentoAdicionado(data){
-		console.log(data);
-	}
 	
 	return NovoMedicamento;
 })();
