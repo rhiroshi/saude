@@ -1,20 +1,26 @@
 package com.oficina.saude.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Receita {
+@Table(name="receita")
+public class Receita implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private Long codigo;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="consulta")
 	private Consulta consulta;
 	

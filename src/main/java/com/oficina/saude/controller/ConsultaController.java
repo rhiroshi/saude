@@ -70,10 +70,7 @@ public class ConsultaController {
 		Receita receita = receitas.findOne(consulta.getReceita().getCodigo());
 		receita.setConsulta(consulta);
 		consultas.save(consulta);
-		Receita rec = receitas.save(receita);
-		consulta.setReceita(rec);
-		consultas.save(consulta);
-		
+		receitas.save(receita);
 		return new ModelAndView("redirect:/consulta/pendentes");
 	}
 	
