@@ -69,11 +69,9 @@ public class ConsultaController {
 	public ModelAndView salvar(Consulta consulta, RedirectAttributes attributes) {
 		Prontuario prontuario = consulta.getProntuario();
 		prontuario.setStatus(Status.ATENDIDO);
+		Consulta con = consulta;
 		consulta.setProntuario(prontuario);
-		Receita receita = receitas.findOne(consulta.getReceita().getCodigo());
-		receita.setConsulta(consulta);
 		consultas.save(consulta);
-		receitas.save(receita);
 		return new ModelAndView("redirect:/consulta/pendentes");
 	}
 	

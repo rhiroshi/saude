@@ -24,7 +24,6 @@ public class PedidoMedicamento {
 	
 	private int quantidade;
 
-	@JsonManagedReference //Usar na tabela que tem a FK
 	@ManyToOne
 	@JoinColumn(name="receita")
 	private Receita receita;

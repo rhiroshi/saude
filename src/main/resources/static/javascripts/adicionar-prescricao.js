@@ -20,8 +20,11 @@ var NovoMedicamento = (function(){
 			if(this.idMedicamento != ''){
 				var rreceita = {};
 				var pproduto = {};
+				var cconsulta = {};
 				pproduto.codigo = this.idMedicamento.val();
 				rreceita.codigo = this.idConsulta;
+				cconsulta.id = this.idConsulta;
+				rreceita.consulta = cconsulta;
 				$.ajax({
 					url:'http://localhost:8080/produtos/novoPedido',
 					method:'POST',
@@ -31,7 +34,8 @@ var NovoMedicamento = (function(){
 					data : JSON.stringify({
 						receita:rreceita,
 						produto:pproduto,
-						quantidade:this.qtdMedicamento.val()
+						quantidade:this.qtdMedicamento.val(),
+						suceess: onMedicamentoSalvo.bind(this)
 					})
 				})
 				var prescricoes = $('#prescricoes');
@@ -45,6 +49,10 @@ var NovoMedicamento = (function(){
 			}
 		}.bind(this));
 	})
+	
+	function onMedicamentoSalvo(data){
+		console.log(data);
+	}
 	
 	function onModalHide(){
 		$(this).data('bs.modal', null);

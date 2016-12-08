@@ -24,7 +24,7 @@ public class Receita implements Serializable{
 	private Long codigo;
 	
 	@JsonManagedReference
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="consulta")
 	private Consulta consulta;
 

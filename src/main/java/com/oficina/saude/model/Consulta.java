@@ -26,11 +26,11 @@ public class Consulta implements Serializable {
 	@Column(name="id")
 	private Long id;
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "codigo_prontuario")
 	private Prontuario prontuario;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cpf_medico")
 	private Medico medico;
 
