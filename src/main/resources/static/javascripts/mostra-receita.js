@@ -34,6 +34,7 @@ $(function(){
 		receita = button.data('receita');
 		var modal = $(this);
 		mostraReceita.abrirModal(receita);
+		$('#url-receita').attr('href', '/receita/imprimir/'+receita);
 	});
 	
 })

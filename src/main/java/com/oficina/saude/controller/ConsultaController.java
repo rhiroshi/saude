@@ -1,5 +1,8 @@
 package com.oficina.saude.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -74,4 +77,5 @@ public class ConsultaController {
 		return new ModelAndView("redirect:/consulta/pendentes");
 	}
 	
+
 }

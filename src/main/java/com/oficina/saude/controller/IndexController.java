@@ -1,12 +1,16 @@
 package com.oficina.saude.controller;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oficina.saude.model.Paciente;
@@ -18,7 +22,6 @@ import com.oficina.saude.repository.Prontuarios;
 import com.oficina.saude.repository.Usuarios;
 
 @Controller
-@RequestMapping("/index")
 public class IndexController {
 
 	@Autowired
@@ -32,8 +35,8 @@ public class IndexController {
 	
 	@Autowired
 	private Consultas consultas;
-	
-	@RequestMapping
+
+	@RequestMapping("/index")
 	public ModelAndView novo() {
 		ModelAndView mv;
 		SecurityContext context = SecurityContextHolder.getContext();
@@ -55,5 +58,23 @@ public class IndexController {
 		}
 		return mv;
 	}
+
+	@RequestMapping(value="/atestado/{codigo}",method = RequestMethod.GET)
+	public ModelAndView atestado(@PathVariable Long codigo){
+		Map<String, Object> parametros = new HashMap<>();
+		parametros.put("format", "pdf");
+		parametros.put("codigo_consulta", codigo);
+		return new ModelAndView("rel_atestado", parametros);
+	}
+
+	@RequestMapping(value="/receita/imprimir/{codigo}",method = RequestMethod.GET)
+	public ModelAndView imprimeReceita(@PathVariable Long codigo){
+		Map<String, Object> parametros = new HashMap<>();
+		parametros.put("format", "pdf");
+		parametros.put("consulta_codigo", codigo);
+		return new ModelAndView("rel_medicamentos", parametros);
+	}
+	
+	
 	
 }

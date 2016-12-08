@@ -51,6 +51,8 @@
                               <a class="btn btn-default" data-toggle="modal" data-target="#ModalObservacaoPesquisa"
 										th:attr="data-observacao=${consulta.observacao}"
 											title="Descricao" rel="tooltip" data-placement="top"><em class="glyphicon glyphicon-search"></em></a>
+                              <a class="btn btn-default" th:href="@{/atestado/{codigo}(codigo=${consulta.id})}"
+											title="Atestado" rel="tooltip"><em class="fa fa-file-pdf-o"></em></a>
 							 	<a th:if="${consulta.receita != null}" class="btn btn-default" data-toggle="modal" data-target="#ModalMostraReceita"
 										th:attr="data-receita=${consulta.receita.codigo}"
 											title="Receita" rel="tooltip" data-placement="top"><em class="fa fa-medkit"></em></a>
